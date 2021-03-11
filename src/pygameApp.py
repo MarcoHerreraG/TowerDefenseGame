@@ -10,7 +10,7 @@ class PyagemApp():
         self.running = True
         self.fps = 60
         self.active_scene = None
-        self.width = 650
+        self.width = 1200
         self.height = 650
         self.font = None
         self.font2 = None
