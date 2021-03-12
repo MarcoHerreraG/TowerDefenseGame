@@ -10,8 +10,8 @@ class Bullet_Pool():
     def shoot(self, targetPosX, targetPosY, targetTamX, targetTamY):
         for bullet in self.pool:
             if bullet.shot == False:
-                bullet.shootToTarget(targetPosX, targetPosY, targetTamX, targetTamY)
                 bullet.shot = True
+                bullet.shootToTarget(targetPosX, targetPosY, targetTamX, targetTamY)
                 break        
 
     def draw(self, screen):
