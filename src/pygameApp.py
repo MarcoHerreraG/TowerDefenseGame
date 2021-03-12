@@ -10,8 +10,8 @@ class PyagemApp():
         self.running = True
         self.fps = 60
         self.active_scene = None
-        self.width = 1200
-        self.height = 650
+        self.width = 1000
+        self.height = 631
         self.font = None
         self.font2 = None
         self.init_pygame()
@@ -56,4 +56,4 @@ app = PyagemApp()
 
 app.run()
 
-pygame.quit()
+pygame.quit() 
