@@ -11,10 +11,10 @@ class Bullet():
         self.posY = self.originY
         self.speed = 10
         self.shot = False
-        self.targetPosX = None
-        self.targetPosY = None
-        self.targetTamX = None
-        self.targetTamY = None
+        self.targetPosX = 0
+        self.targetPosY = 0
+        self.targetTamX = 0
+        self.targetTamY = 0
 
     def shootToTarget(self, targetPosX, targetPosY, targetTamX, targetTamY):
         self.targetPosX = targetPosX
@@ -34,7 +34,9 @@ class Bullet():
         pygame.draw.circle(screen, (255, 255, 255), (self.posX, self.posY), self.tam)
 
     def update(self):
-        if self.posY < -10 or self.posY > 660 or self.posX < -10 or self.posX > 1210 or (self.posX == self.targetPosX and self.posY == self.targetPosY):
+        if self.posY < -10 or self.posY > 660 or self.posX < -10 or self.posX > 1210:
+            self.shot = False
+        if self.posX > self.targetPosX - 20 and self.posX < self.targetPosX + 20 and self.posY > self.targetPosY - 20 and self.posY < self.targetPosY + 20:
             self.shot = False
         if self.shot == True:
             self.shootToTarget(self.targetPosX, self.targetPosY, self.targetTamX, self.targetTamY)
