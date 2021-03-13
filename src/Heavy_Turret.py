@@ -9,7 +9,7 @@ class Heavy_Turret(Turret):
         self.tamX = 30
         self.tamY = 30
         self.damage = 220
-        self.shootingSpeed = 1.0
+        self.shootingSpeed = 1000
         self.range = 80
         self.posX = posX - (self.tamX/2)
         self.posY = posY - (self.tamY/2)

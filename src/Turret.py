@@ -12,7 +12,7 @@ class Turret:
         self.range = 0
         self.posX = posX - (self.tamX/2)
         self.posY = posY - (self.tamY/2)
-        self.gun = Bullet_Pool(10, posX, posY)
+        self.gun = Bullet_Pool(1, posX, posY)
 
     def boundaries(self):
         if self.posX > (1200 - self.tamX):
@@ -21,8 +21,13 @@ class Turret:
         if self.posX < 0:
             self.posX = 0
     
-    def fire(self, targetPosX, targetPosY, targetTamX, targetTamY):
+    def fire(self, target):
+        targetPosX = target.currentpos.x
+        targetPosY = target.currentpos.y
+        targetTamX = 15
+        targetTamY = 15
         self.gun.shoot(targetPosX, targetPosY, targetTamX, targetTamY)
+        target.health -= self.damage
 
     def fireInRange(self, target):
         targetPosX = target.currentpos.x
@@ -35,7 +40,7 @@ class Turret:
         w = targetX -  self.posX
         d = math.sqrt(h * h + w * w)
         if(d < self.range):
-            self.fire(targetPosX, targetPosY, targetTamX, targetTamY)
+            self.fire(target)
 
     def draw(self, screen):
         pygame.draw.circle(screen, (255, 255, 255), (self.posX + self.tamX / 2, self.posY + self.tamY / 2), self.range)

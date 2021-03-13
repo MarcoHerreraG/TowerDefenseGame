@@ -9,7 +9,7 @@ class Basic_Turret(Turret):
         self.tamX = 30
         self.tamY = 30
         self.damage = 90
-        self.shootingSpeed = 0.5
+        self.shootingSpeed = 500
         self.range = 80
         self.posX = posX - (self.tamX/2)
         self.posY = posY - (self.tamY/2)

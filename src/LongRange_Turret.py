@@ -9,7 +9,7 @@ class LongRange_Turret(Turret):
         self.tamX = 30
         self.tamY = 30
         self.damage = 160
-        self.shootingSpeed = 0.7
+        self.shootingSpeed = 700
         self.range = 140
         self.posX = posX - (self.tamX/2)
         self.posY = posY - (self.tamY/2)
