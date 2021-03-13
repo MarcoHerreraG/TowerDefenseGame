@@ -1,14 +1,15 @@
 import pygame
 from Bullet_Pool import Bullet_Pool
+from Turret import Turret
 
-class Turret:
+class LongRange_Turret(Turret):
 
     def __init__(self, posX, posY):
         self.tamX = 30
         self.tamY = 30
-        self.damage = None
-        self.shootingSpeed = None
-        self.range = 0
+        self.damage = 160
+        self.shootingSpeed = 0.7
+        self.range = 140
         self.posX = posX - (self.tamX/2)
         self.posY = posY - (self.tamY/2)
         self.gun = Bullet_Pool(10, posX, posY)
@@ -24,7 +25,7 @@ class Turret:
         self.gun.shoot(targetPosX, targetPosY, targetTamX, targetTamY)
 
     def draw(self, screen):
-        pygame.draw.circle(screen, (255, 255, 255), (self.posX + self.tamX / 2, self.posY + self.tamY / 2), self.range)
+        pygame.draw.circle(screen, (0, 255, 0), (self.posX + self.tamX / 2, self.posY + self.tamY / 2), self.range)
         pygame.draw.rect(screen, (255, 255, 255), (self.posX, self.posY, self.tamX, self.tamY))
         self.gun.draw(screen)
 
