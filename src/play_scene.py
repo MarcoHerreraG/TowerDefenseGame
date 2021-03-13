@@ -38,7 +38,7 @@ class PlayScene(Scene):
             e.update()
         for turret in self.turrets:
             for en in self.enemy:
-                turret.fireInRange(en.currentpos.x, en.currentpos.y, 15, 15)
+                turret.fireInRange(en)
             turret.update()
 
     def draw(self):
