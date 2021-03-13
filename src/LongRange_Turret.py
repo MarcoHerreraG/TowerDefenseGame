@@ -1,4 +1,5 @@
 import pygame
+import math
 from Bullet_Pool import Bullet_Pool
 from Turret import Turret
 
@@ -13,16 +14,6 @@ class LongRange_Turret(Turret):
         self.posX = posX - (self.tamX/2)
         self.posY = posY - (self.tamY/2)
         self.gun = Bullet_Pool(10, posX, posY)
-
-    def boundaries(self):
-        if self.posX > (1200 - self.tamX):
-            self.posX = (1200 - self.tamX)
-        
-        if self.posX < 0:
-            self.posX = 0
-    
-    def fire(self, targetPosX, targetPosY, targetTamX, targetTamY):
-        self.gun.shoot(targetPosX, targetPosY, targetTamX, targetTamY)
 
     def draw(self, screen):
         pygame.draw.circle(screen, (0, 255, 0), (self.posX + self.tamX / 2, self.posY + self.tamY / 2), self.range)
