@@ -24,7 +24,11 @@ class Turret:
     def fire(self, targetPosX, targetPosY, targetTamX, targetTamY):
         self.gun.shoot(targetPosX, targetPosY, targetTamX, targetTamY)
 
-    def fireInRange(self, targetPosX, targetPosY, targetTamX, targetTamY):
+    def fireInRange(self, target):
+        targetPosX = target.currentpos.x
+        targetPosY = target.currentpos.y
+        targetTamX = 15
+        targetTamY = 15
         targetX = targetPosX + (targetTamX / 2)
         targetY = targetPosY + (targetTamY / 2)
         h = targetY - self.posY
