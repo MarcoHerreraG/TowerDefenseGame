@@ -7,12 +7,13 @@ class Turret:
     def __init__(self, posX, posY):
         self.tamX = 30
         self.tamY = 30
-        self.damage = None
-        self.shootingSpeed = None
+        self.damage = 0
+        self.shootingSpeed = 0
         self.range = 0
         self.posX = posX - (self.tamX/2)
         self.posY = posY - (self.tamY/2)
         self.gun = Bullet_Pool(1, posX, posY)
+        self.last = pygame.time.get_ticks()
 
     def boundaries(self):
         if self.posX > (1200 - self.tamX):
@@ -40,7 +41,10 @@ class Turret:
         w = targetX -  self.posX
         d = math.sqrt(h * h + w * w)
         if(d < self.range):
-            self.fire(target)
+            now = pygame.time.get_ticks()
+            if now - self.last >= self.shootingSpeed:
+                self.fire(target)
+                self.last = pygame.time.get_ticks()
 
     def draw(self, screen):
         pygame.draw.circle(screen, (255, 255, 255), (self.posX + self.tamX / 2, self.posY + self.tamY / 2), self.range)
