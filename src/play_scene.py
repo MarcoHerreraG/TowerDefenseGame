@@ -27,15 +27,16 @@ class PlayScene(Scene):
         print('Se inicia:', self.name)
         for e in self.enemy:
             e.start(random.randint(100, 800), random.randint(100, 800))
+            e.tarx = 200
+            e.tary = 200
         if(self.level == 1):
             self.gamemap.maptext="level1.txt"
             self.gamemap.start("assets/images/lvl1.png")
+            self.gamemap.readlevel("level1.txt")
 
     def process_events(self, event):
         if event.type == pygame.KEYDOWN:
-            print("HOLAA")
             '''self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
-            self.gamemap.readlevel()
 
     def update(self):
         for e in self.enemy:

@@ -11,7 +11,7 @@ class Map:
         self.image = None
         self.rect = None
         self.maptext = None
-        self.content = None
+        self.coords = []
 
     def start(self, leveltodraw):
         self.imagetodraw = leveltodraw
@@ -26,10 +26,14 @@ class Map:
         pass
     
 
-    def readlevel(self):
-        print("ENTRE")
-        self.content = self.maptext.readlines()
-        for x in self.content:
-            print(x)
+    def readlevel(self, level):
+        with open(level) as f:
+            self.coords = []
+            for line in f:
+                line = line.split() # to deal with blank 
+                if line:            # lines (ie skip them)
+                    line = [int(i) for i in line]
+                    self.coords.append(line)
         
-        self.maptext.close()
+        for x in self.coords:
+            print(x)

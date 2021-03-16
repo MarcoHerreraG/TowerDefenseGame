@@ -7,7 +7,7 @@ class Enemy:
         self.screen_rect = app.screen.get_rect()
         self.image = pygame.image.load("assets/images/test.png")
         self.rect = self.image.get_rect()
-        self.health = 0
+        self.health = 100
         self.damagetonexus = 0
         self.rect.x = x
         self.rect.y = y

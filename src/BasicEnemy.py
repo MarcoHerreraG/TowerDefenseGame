@@ -8,7 +8,7 @@ class BasicEnemy(Enemy):
         self.anim = [pygame.image.load('Assets/Images/Basic/Front/Basic0.png'), pygame.image.load('Assets/Images/Basic/Front/Basic1.png'), pygame.image.load('Assets/Images/Basic/Front/Basic2.png'), 
         pygame.image.load('Assets/Images/Basic/Front/Basic3.png'), pygame.image.load('Assets/Images/Basic/Front/Basic4.png')]
         self.rect = self.anim[0].get_rect()
-        self.health = 0
+        self.health = 100
         self.damagetonexus = 0
         self.rect.x = x
         self.rect.y = y
