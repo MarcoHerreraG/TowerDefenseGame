@@ -32,9 +32,10 @@ class PlayScene(Scene):
             self.gamemap.start("assets/images/lvl1.png")
 
     def process_events(self, event):
-        '''if event.type == pygame.KEYDOWN:
-            self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
-        pass
+        if event.type == pygame.KEYDOWN:
+            print("HOLAA")
+            '''self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
+            self.gamemap.readlevel()
 
     def update(self):
         for e in self.enemy:
