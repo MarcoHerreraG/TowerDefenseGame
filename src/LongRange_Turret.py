@@ -16,9 +16,9 @@ class LongRange_Turret(Turret):
         self.spawn(posX, posY)
 
     def draw(self, screen):
-        pygame.draw.circle(screen, (0, 255, 0), (self.posX + self.tamX / 2, self.posY + self.tamY / 2), self.range)
-        pygame.draw.rect(screen, (255, 255, 255), (self.posX, self.posY, self.tamX, self.tamY))
         self.gun.draw(screen)
+        #pygame.draw.circle(screen, (0, 255, 0), (self.posX + self.tamX / 2, self.posY + self.tamY / 2), self.range)
+        pygame.draw.rect(screen, (0, 255, 0), (self.posX, self.posY, self.tamX, self.tamY))
 
     def update(self):
         self.gun.update()
