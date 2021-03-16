@@ -25,16 +25,16 @@ class Turret:
     def fire(self, target):
         targetPosX = target.currentpos.x
         targetPosY = target.currentpos.y
-        targetTamX = 15
-        targetTamY = 15
+        targetTamX = 60
+        targetTamY = 60
         self.gun.shoot(targetPosX, targetPosY, targetTamX, targetTamY)
         target.health -= self.damage
 
     def fireInRange(self, target):
         targetPosX = target.currentpos.x
         targetPosY = target.currentpos.y
-        targetTamX = 15
-        targetTamY = 15
+        targetTamX = 60
+        targetTamY = 60
         targetX = targetPosX + (targetTamX / 2)
         targetY = targetPosY + (targetTamY / 2)
         h = targetY - self.posY

@@ -36,7 +36,7 @@ class Bullet():
     def update(self):
         if self.posY < -10 or self.posY > 660 or self.posX < -10 or self.posX > 1210:
             self.shot = False
-        if self.posX > self.targetPosX - 20 and self.posX < self.targetPosX + 20 and self.posY > self.targetPosY - 20 and self.posY < self.targetPosY + 20:
+        if self.posX > self.targetPosX - 60 and self.posX < self.targetPosX + 60 and self.posY > self.targetPosY - 60 and self.posY < self.targetPosY + 60:
             self.shot = False
         if self.shot == True:
             self.shootToTarget(self.targetPosX, self.targetPosY, self.targetTamX, self.targetTamY)
