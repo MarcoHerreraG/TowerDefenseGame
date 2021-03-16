@@ -17,12 +17,12 @@ class PlayScene(Scene):
         self.app = app
         self.screen = app.screen
         self.enemy = [BasicEnemy(app, 700, 400), BasicEnemy(app, 600, 400), BasicEnemy(app, 200, 400), BasicEnemy(app, 400, 400)]
-        self.turrets = [Basic_Turret(525, 469), Heavy_Turret(304, 247), LongRange_Turret(525, 247)]
+        self.turrets = []
         self.gamemap = Map(app)
         self.leveltodraw = None
         self.level = 1
         self.grid = Grid()
-        self.ui = UI(self.grid)
+        self.ui = UI(self.grid, self.turrets)
         super().__init__('PlayScene')
 
     def start(self):
