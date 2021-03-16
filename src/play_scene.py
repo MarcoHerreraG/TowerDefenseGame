@@ -49,16 +49,16 @@ class PlayScene(Scene):
             for en in self.enemy:
                 turret.fireInRange(en)
             turret.update()
-        self.ui.update()
+        '''self.ui.update()'''
 
     def draw(self):
         self.screen.fill((255,255,255))
         self.gamemap.draw(self.gamemap.rect)
-        for turret in self.turrets:
-            turret.draw(self.screen)
+        '''for turret in self.turrets:
+            turret.draw(self.screen)'''
         for e in self.enemy:
             e.draw()
-        self.grid.draw(self.screen)
+        '''self.grid.draw(self.screen)'''
 
     def exit(self):
         print('Termina:', self.name)
