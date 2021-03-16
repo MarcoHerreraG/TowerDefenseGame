@@ -18,10 +18,11 @@ class PlayScene(Scene):
         self.screen = app.screen
         self.enemy = [BasicEnemy(app, 700, 400), BasicEnemy(app, 600, 400), BasicEnemy(app, 200, 400), BasicEnemy(app, 400, 400)]
         self.turrets = []
-        self.gamemap = Map(app)
+        self.grid = Grid()
+        self.gamemap = Map(app, self.grid)
         self.leveltodraw = None
         self.level = 1
-        self.grid = Grid()
+        self.testing = False
         self.ui = UI(self.grid, self.turrets)
         super().__init__('PlayScene')
 
@@ -29,13 +30,11 @@ class PlayScene(Scene):
         print('Se inicia:', self.name)
         for e in self.enemy:
             e.start(random.randint(100, 800), random.randint(100, 800))
-            e.tarx = 200
-            e.tary = 200
         if(self.level == 1):
             self.gamemap.maptext="level1.txt"
             self.gamemap.start("assets/images/lvl1.png")
-            self.gamemap.readlevel("level1.txt")
-
+            self.gamemap.loadmap("level1.txt")
+            
     def process_events(self, event):
         if event.type == pygame.KEYDOWN:
             '''self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
@@ -49,16 +48,16 @@ class PlayScene(Scene):
             for en in self.enemy:
                 turret.fireInRange(en)
             turret.update()
-        '''self.ui.update()'''
+        self.ui.update()
 
     def draw(self):
         self.screen.fill((255,255,255))
         self.gamemap.draw(self.gamemap.rect)
-        '''for turret in self.turrets:
-            turret.draw(self.screen)'''
+        for turret in self.turrets:
+            turret.draw(self.screen)
         for e in self.enemy:
             e.draw()
-        '''self.grid.draw(self.screen)'''
+        self.ui.draw(self.screen)
 
     def exit(self):
         print('Termina:', self.name)
