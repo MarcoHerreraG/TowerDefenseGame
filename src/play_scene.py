@@ -7,6 +7,7 @@ from Heavy_Turret import Heavy_Turret
 from LongRange_Turret import LongRange_Turret
 from mapcontrol import Map
 from Grid import Grid
+from UI import UI
 import pygame
 import asyncio
 import time
@@ -21,6 +22,7 @@ class PlayScene(Scene):
         self.leveltodraw = None
         self.level = 1
         self.grid = Grid()
+        self.ui = UI(self.grid)
         super().__init__('PlayScene')
 
     def start(self):
@@ -47,6 +49,7 @@ class PlayScene(Scene):
             for en in self.enemy:
                 turret.fireInRange(en)
             turret.update()
+        self.ui.update()
 
     def draw(self):
         self.screen.fill((255,255,255))
