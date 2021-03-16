@@ -26,6 +26,7 @@ class PlayScene(Scene):
         for e in self.enemy:
             e.start(random.randint(100, 800), random.randint(100, 800))
         if(self.level == 1):
+            self.gamemap.maptext="level1.txt"
             self.gamemap.start("assets/images/lvl1.png")
 
     def process_events(self, event):
