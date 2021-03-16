@@ -35,6 +35,8 @@ class PlayScene(Scene):
 
     def update(self):
         for e in self.enemy:
+            if e.health <= 0:
+                self.enemy.remove(e)
             e.update()
         for turret in self.turrets:
             for en in self.enemy:
@@ -44,10 +46,10 @@ class PlayScene(Scene):
     def draw(self):
         self.screen.fill((255,255,255))
         self.gamemap.draw(self.gamemap.rect)
-        for e in self.enemy:
-            e.draw()
         for turret in self.turrets:
             turret.draw(self.screen)
+        for e in self.enemy:
+            e.draw()
 
     def exit(self):
         print('Termina:', self.name)
