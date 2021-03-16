@@ -11,10 +11,9 @@ class Heavy_Turret(Turret):
         self.damage = 220
         self.shootingSpeed = 1000
         self.range = 80
-        self.posX = posX - (self.tamX/2)
-        self.posY = posY - (self.tamY/2)
         self.gun = Bullet_Pool(10, posX, posY)
         self.last = pygame.time.get_ticks()
+        self.spawn(posX, posY)
 
     def draw(self, screen):
         pygame.draw.circle(screen, (255, 0, 0), (self.posX + self.tamX / 2, self.posY + self.tamY / 2), self.range)

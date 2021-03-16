@@ -10,10 +10,13 @@ class Turret:
         self.damage = 0
         self.shootingSpeed = 0
         self.range = 0
-        self.posX = posX - (self.tamX/2)
-        self.posY = posY - (self.tamY/2)
         self.gun = Bullet_Pool(1, posX, posY)
         self.last = pygame.time.get_ticks()
+        self.spawn(posX, posY)
+
+    def spawn(self, posX, posY):
+        self.posX = posX - (self.tamX/2)
+        self.posY = posY - (self.tamY/2)
 
     def boundaries(self):
         if self.posX > (1200 - self.tamX):
