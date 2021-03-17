@@ -27,7 +27,7 @@ class PlayScene(Scene):
         self.testing = False
         self.wallet = 300
         self.nexus = Nexus(self.grid)
-        self.ui = UI(self.grid, self.turrets, self.wallet)
+        self.ui = UI(self.grid, self.turrets, self.wallet, self.nexus)
         super().__init__('PlayScene')
 
     def start(self):
