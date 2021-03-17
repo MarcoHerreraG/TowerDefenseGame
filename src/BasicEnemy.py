@@ -36,18 +36,4 @@ class BasicEnemy(Enemy):
         if(self.active):
             self.movetotarget(self.postogo.x, self.postogo.y, .2)
     
-    def movetotarget(self, tarx , tary, speed):
-        self.movement = True
-        h = tary-self.currentpos.y
-        w = tarx-self.currentpos.x
-        d = math.sqrt(h*h + w*w)
-        if(d>1):
-            self.currentpos.y = self.currentpos.y + speed / d*h
-            self.currentpos.x = self.currentpos.x + speed / d*w
-
-    def setspawn(self, x1, y1):
-        self.currentpos.x = x1
-        self.currentpos.y = y1
-
-
 
