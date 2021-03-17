@@ -39,7 +39,7 @@ class PyagemApp():
                 self.running = False
             self.active_scene.process_events(event)
 
-    def update(self):
+    def update(self): 
         self.active_scene.update()
 
     def draw(self):
