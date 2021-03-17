@@ -18,8 +18,8 @@ class Grid:
                 id = (x, y)
                 posX = x * tam
                 posY = y * tam
-                '''if (x < 1 and y > 1) or (x > 1 and y < 1):'''
-                self.grid.append(Cell(posX, posY, color, tam, id))
+                if (x < 1 and y > 1) or (x > 1 and y < 1):
+                    self.grid.append(Cell(posX, posY, color, tam, id))
                 if color == (255, 0, 0):
                     color = (0, 255, 0)
                 elif color == (0, 255, 0):
