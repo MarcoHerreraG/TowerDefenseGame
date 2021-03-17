@@ -17,10 +17,10 @@ import random
 class PlayScene(Scene):
     def __init__(self, app):
         self.app = app
-        self.screen = app.screen
-        self.enemy = Enemy_Pool(app, 9, 900, 900)
-        self.turrets = []
         self.grid = Grid()
+        self.screen = app.screen
+        self.enemy = Enemy_Pool(app, 100, 900, 900, self.grid)
+        self.turrets = []
         self.gamemap = Map(app, self.grid)
         self.leveltodraw = None
         self.level = 1
@@ -45,7 +45,7 @@ class PlayScene(Scene):
             '''self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
 
     def update(self):
-        self.enemy.spawn_enem(200, 200)
+        self.enemy.spawn_enem(self.gamemap.coords)
         for e in self.enemy.pool:
             if e.health <= 0:
                 e.active = False

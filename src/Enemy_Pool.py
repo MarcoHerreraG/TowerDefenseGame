@@ -6,15 +6,18 @@ import pygame
 import random
 
 class Enemy_Pool():
-    def __init__(self, app, poolSize, deactiveX, deactiveY):
+    def __init__(self, app, poolSize, deactiveX, deactiveY, grid):
         self.app = app
         self.pool = []
         self.size = poolSize
         self.originX = deactiveX
         self.originY =deactiveY
-        self.spawnRate = 5000
+        self.spawnRate = 2000
         self.last = pygame.time.get_ticks()
         self.i = 0
+        self.grid = grid
+        self.nextx = 1
+        self.nexty = 1
 
     def fill_pool(self):
         for a in range(self.size):
@@ -22,22 +25,16 @@ class Enemy_Pool():
             if(self.enemy == 1):
                 self.pool.append(BasicEnemy(self.app, self.originX, self.originY))
             elif(self.enemy == 2):
-                self.pool.append(FastEnemy(self.app, self.originX, self.originY))
+                self.pool.append(BasicEnemy(self.app, self.originX, self.originY))
             elif(self.enemy == 3):
-                self.pool.append(TankEnemy(self.app, self.originX, self.originY))
+                self.pool.append(BasicEnemy(self.app, self.originX, self.originY))
 
-    def spawn_enem(self, x, y):
+    def spawn_enem(self, coords):
         now = pygame.time.get_ticks()
         if(now - self.last >= self.spawnRate and self.i < self.size and self.pool[self.i].active == False):
-            print("estoy generando enemigo")
-            self.pool[self.i].start(x, y)
+            print("estoy en loop")
+            for cell in self.grid.grid:
+                    if cell.id[0] == coords[0][0] and cell.id[1] == coords[0][1]:
+                        self.pool[self.i].start(cell.posX+5, cell.posY+5, coords, self.grid)
             self.i = self.i + 1
             self.last = pygame.time.get_ticks()
-
-    def draw(self):
-        for enemy in self.pool:
-            enemy.draw()
-
-    def update(self):
-        for enemy in self.pool:
-            enemy.update()

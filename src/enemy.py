@@ -9,21 +9,30 @@ class Enemy:
         self.rect = self.image.get_rect()
         self.health = 100
         self.damagetonexus = 0
+        self.active = False
         self.rect.x = x
         self.rect.y = y
-        self.speed = 0.1
+        self.speed = None
         self.tarx = 0
         self.tary = 0
         self.currentpos = pygame.Vector2(self.rect.x, self.rect.y)
-        self.postogo = pygame.Vector2(600, 600)
+        self.coords = None
+        self.grid = None
+        self.nextx = 0
+        self.nexty = 0
+        self.i = 1
 
-    def start(self, x , y):
+    def start(self, x , y, coords, grid):
         self.setspawn(x,y)
+        self.coords = coords
+        self.grid = grid
+
     def draw(self):
         self.screen.blit(self.image, self.currentpos)
     
     def update(self):
-        self.movetotarget(self.postogo.x, self.postogo.y)
+        if(self.active):
+            self.movetotarget(self.nextx, self.nexty, self.speed)
     
     def movetotarget(self, tarx , tary, speed):
         self.movement = True
@@ -33,10 +42,23 @@ class Enemy:
         if(d>1):
             self.currentpos.y = self.currentpos.y + speed / d*h
             self.currentpos.x = self.currentpos.x + speed / d*w
+        else:
+            self.coordstomove()
 
     def setspawn(self, x1, y1):
         self.currentpos.x= x1
         self.currentpos.y = y1
+    
+    def coordstomove(self):
+        for cell in self.grid.grid:
+            if cell.id[0] == self.coords[self.i][0] and cell.id[1] == self.coords[self.i][1]:
+                print(self.i)
+                self.nextx = cell.posX+5
+                self.nexty = cell.posY+5
+        self.i = self.i + 1
+        return 
+    
+
 
 
 
