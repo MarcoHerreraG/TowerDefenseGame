@@ -1,3 +1,4 @@
+from Nexus import Nexus
 from Scene import Scene
 from enemy import Enemy
 from Enemy_Pool import Enemy_Pool
@@ -12,11 +13,12 @@ import pygame
 import asyncio
 import time
 import random
+
 class PlayScene(Scene):
     def __init__(self, app):
         self.app = app
         self.screen = app.screen
-        self.enemy = Enemy_Pool(app, 3, 900, 900)
+        self.enemy = Enemy_Pool(app, 9, 900, 900)
         self.turrets = []
         self.grid = Grid()
         self.gamemap = Map(app, self.grid)
@@ -24,7 +26,8 @@ class PlayScene(Scene):
         self.level = 1
         self.testing = False
         self.wallet = 300
-        self.ui = UI(self.grid, self.turrets, self.wallet)
+        self.nexus = Nexus(self.grid)
+        self.ui = UI(self.grid, self.turrets, self.wallet, self.nexus)
         super().__init__('PlayScene')
 
     def start(self):
@@ -36,6 +39,8 @@ class PlayScene(Scene):
             self.gamemap.loadmap("level1.txt")
             
     def process_events(self, event):
+        if self.nexus.health <= 0:
+            self.app.change_scene('over')
         if event.type == pygame.KEYDOWN:
             '''self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
 
@@ -54,6 +59,7 @@ class PlayScene(Scene):
     def draw(self):
         self.screen.fill((255,255,255))
         self.gamemap.draw(self.gamemap.rect)
+        self.nexus.draw(self.screen)
         for turret in self.turrets:
             turret.draw(self.screen)
         for e in self.enemy.pool:

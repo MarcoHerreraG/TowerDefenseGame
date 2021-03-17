@@ -25,13 +25,14 @@ class Enemy:
     def update(self):
         self.movetotarget(self.postogo.x, self.postogo.y)
     
-    def movetotarget(self, tarx , tary):
+    def movetotarget(self, tarx , tary, speed):
+        self.movement = True
         h = tary-self.currentpos.y
         w = tarx-self.currentpos.x
         d = math.sqrt(h*h + w*w)
         if(d>1):
-            self.currentpos.y = self.currentpos.y + self.speed / d*h
-            self.currentpos.x = self.currentpos.x + self.speed / d*w
+            self.currentpos.y = self.currentpos.y + speed / d*h
+            self.currentpos.x = self.currentpos.x + speed / d*w
 
     def setspawn(self, x1, y1):
         self.currentpos.x= x1
