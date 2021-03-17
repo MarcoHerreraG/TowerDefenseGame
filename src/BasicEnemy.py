@@ -15,6 +15,7 @@ class BasicEnemy(Enemy):
         self.speed = 0.1
         self.tarx = 0
         self.tary = 0
+        self.active = True
         self.currentpos = pygame.Vector2(self.rect.x, self.rect.y)
         self.postogo = pygame.Vector2(600, 600)
         self.movement = False
@@ -22,14 +23,18 @@ class BasicEnemy(Enemy):
 
     def start(self, x , y):
         self.setspawn(x,y)
+        self.active = True
+
     def draw(self):
-        if(self.loopCount + 1 >= 50):
-            self.loopCount = 0
-        self.screen.blit(self.anim[self.loopCount//10], self.currentpos)
-        self.loopCount+=1
+        if(self.active):
+            if(self.loopCount + 1 >= 50):
+                self.loopCount = 0
+            self.screen.blit(self.anim[self.loopCount//10], self.currentpos)
+            self.loopCount+=1
     
     def update(self):
-        self.movetotarget(self.postogo.x, self.postogo.y, .2)
+        if(self.active):
+            self.movetotarget(self.postogo.x, self.postogo.y, .2)
     
     def movetotarget(self, tarx , tary, speed):
         self.movement = True

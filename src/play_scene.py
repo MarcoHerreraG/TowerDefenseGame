@@ -1,6 +1,6 @@
 from Scene import Scene
 from enemy import Enemy
-from BasicEnemy import BasicEnemy
+from Enemy_Pool import Enemy_Pool
 from Turret import Turret
 from Basic_Turret import Basic_Turret
 from Heavy_Turret import Heavy_Turret
@@ -16,7 +16,7 @@ class PlayScene(Scene):
     def __init__(self, app):
         self.app = app
         self.screen = app.screen
-        self.enemy = [BasicEnemy(app, 700, 400), BasicEnemy(app, 600, 400), BasicEnemy(app, 200, 400), BasicEnemy(app, 400, 400)]
+        self.enemy = Enemy_Pool(app, 3, 900, 900)
         self.turrets = []
         self.grid = Grid()
         self.gamemap = Map(app, self.grid)
@@ -29,8 +29,7 @@ class PlayScene(Scene):
 
     def start(self):
         print('Se inicia:', self.name)
-        for e in self.enemy:
-            e.start(random.randint(100, 800), random.randint(100, 800))
+        self.enemy.fill_pool()
         if(self.level == 1):
             self.gamemap.maptext="level1.txt"
             self.gamemap.start("assets/images/lvl1.png")
@@ -41,12 +40,13 @@ class PlayScene(Scene):
             '''self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
 
     def update(self):
-        for e in self.enemy:
+        self.enemy.spawn_enem(200, 200)
+        for e in self.enemy.pool:
             if e.health <= 0:
-                self.enemy.remove(e)
+                e.active = False
             e.update()
         for turret in self.turrets:
-            for en in self.enemy:
+            for en in self.enemy.pool:
                 turret.fireInRange(en)
             turret.update()
         self.ui.update()
@@ -56,7 +56,7 @@ class PlayScene(Scene):
         self.gamemap.draw(self.gamemap.rect)
         for turret in self.turrets:
             turret.draw(self.screen)
-        for e in self.enemy:
+        for e in self.enemy.pool:
             e.draw()
         self.ui.draw(self.screen)
 

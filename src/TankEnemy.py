@@ -19,7 +19,6 @@ class TankEnemy(Enemy):
         self.active = False
         self.currentpos = pygame.Vector2(self.rect.x, self.rect.y)
         self.postogo = pygame.Vector2(600, 600)
-        self.movement = False
         self.loopCount = 0
 
     def start(self, x , y):
@@ -38,7 +37,6 @@ class TankEnemy(Enemy):
             self.movetotarget(self.postogo.x, self.postogo.y, .2)
     
     def movetotarget(self, tarx , tary, speed):
-        self.movement = True
         h = tary-self.currentpos.y
         w = tarx-self.currentpos.x
         d = math.sqrt(h*h + w*w)
