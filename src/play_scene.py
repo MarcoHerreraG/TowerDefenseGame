@@ -23,7 +23,8 @@ class PlayScene(Scene):
         self.leveltodraw = None
         self.level = 1
         self.testing = False
-        self.ui = UI(self.grid, self.turrets)
+        self.wallet = 300
+        self.ui = UI(self.grid, self.turrets, self.wallet)
         super().__init__('PlayScene')
 
     def start(self):

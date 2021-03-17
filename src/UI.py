@@ -5,7 +5,7 @@ from LongRange_Turret import LongRange_Turret
 import pygame
 
 class UI:
-    def __init__(self, grid, turrets):
+    def __init__(self, grid, turrets, wallet):
         self.turretsSpawn = [(1, 6), (1, 7), (3, 4), (3, 6), (3, 7), (3, 8), (4, 4), (5, 4), (7, 5), (7, 6), (9, 2), (9, 4), (9, 6), (9, 7), (9, 8), (10, 4), (11, 3), (11, 5), (11, 7), (11, 9), (12, 9), (13, 4), (13, 5), (13, 6), (13, 7), (13, 8), (13, 9), (14, 9), (15, 2), (15, 6), (15, 7)] 
         self.mousePos = (0, 0)
         self.grid = grid
@@ -13,23 +13,27 @@ class UI:
         self.type1 = False #Basic
         self.type2 = False #Heavy
         self.type3 = False #Long
+        self.wallet = wallet
 
     def spawnTurret(self, cell):
         for spawn in self.turretsSpawn:
             if cell.id == spawn:
                 if cell.ocupied == False:
-                    if self.type1 == True:
+                    if self.type1 == True and self.wallet >= 100:
                         self.turrets.append(Basic_Turret(cell.posX + (cell.tam / 2), cell.posY + (cell.tam / 2)))
-                        #if no hay suficiente dinero:
-                        self.type1 = False
-                    elif self.type2 == True:
+                        self.wallet -= 100
+                        if self.wallet < 100:
+                            self.type1 = False
+                    elif self.type2 == True and self.wallet >= 200:
                         self.turrets.append(Heavy_Turret(cell.posX + (cell.tam / 2), cell.posY + (cell.tam / 2)))
-                        #if no hay suficiente dinero:
-                        self.type2 = False
-                    elif self.type3 == True:
+                        self.wallet -= 200
+                        if self.wallet < 200:
+                            self.type2 = False
+                    elif self.type3 == True and self.wallet >= 300:
                         self.turrets.append(LongRange_Turret(cell.posX + (cell.tam / 2), cell.posY + (cell.tam / 2)))
-                        #if no hay suficiente dinero:
-                        self.type3 = False
+                        self.wallet -= 300
+                        if self.wallet < 300:
+                            self.type3 = False
                     cell.ocupied = True
 
     def changeTurretType(self, cell):
