@@ -12,12 +12,13 @@ class Enemy_Pool():
         self.size = poolSize
         self.originX = deactiveX
         self.originY =deactiveY
-        self.spawnRate = 7
+        self.spawnRate = 5000
         self.last = pygame.time.get_ticks()
+        self.i = 0
 
     def fill_pool(self):
-        for i in range(self.size):
-            self.enemy = 3#random.randint(0, 4)
+        for a in range(self.size):
+            self.enemy = random.randint(0, 4)
             if(self.enemy == 1):
                 self.pool.append(BasicEnemy(self.app, self.originX, self.originY))
             elif(self.enemy == 2):
@@ -27,10 +28,10 @@ class Enemy_Pool():
 
     def spawn_enem(self, x, y):
         now = pygame.time.get_ticks()
-        i = 0
-        if(now - self.last >= self.spawnRate and i < self.size):
-            self.pool[i].start(x, y)
-            i = i + 1
+        if(now - self.last >= self.spawnRate and self.i < self.size and self.pool[self.i].active == False):
+            print("estoy generando enemigo")
+            self.pool[self.i].start(x, y)
+            self.i = self.i + 1
             self.last = pygame.time.get_ticks()
 
     def draw(self):

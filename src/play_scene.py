@@ -16,7 +16,7 @@ class PlayScene(Scene):
     def __init__(self, app):
         self.app = app
         self.screen = app.screen
-        self.enemy = Enemy_Pool(app, 3, 900, 900)
+        self.enemy = Enemy_Pool(app, 9, 900, 900)
         self.turrets = []
         self.grid = Grid()
         self.gamemap = Map(app, self.grid)
