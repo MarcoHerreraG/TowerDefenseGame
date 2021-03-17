@@ -59,6 +59,7 @@ class PlayScene(Scene):
         for e in self.enemy:
             e.draw()
         self.ui.draw(self.screen)
+        self.grid.draw(self.screen)
 
     def exit(self):
         print('Termina:', self.name)
