@@ -17,18 +17,20 @@ class UI:
     def spawnTurret(self, cell):
         for spawn in self.turretsSpawn:
             if cell.id == spawn:
-                if self.type1 == True:
-                    self.turrets.append(Basic_Turret(cell.posX + (cell.tam / 2), cell.posY + (cell.tam / 2)))
-                    #if no hay suficiente dinero:
-                    self.type1 = False
-                if self.type2 == True:
-                    self.turrets.append(Heavy_Turret(cell.posX + (cell.tam / 2), cell.posY + (cell.tam / 2)))
-                    #if no hay suficiente dinero:
-                    self.type2 = False
-                if self.type3 == True:
-                    self.turrets.append(LongRange_Turret(cell.posX + (cell.tam / 2), cell.posY + (cell.tam / 2)))
-                    #if no hay suficiente dinero:
-                    self.type3 = False
+                if cell.ocupied == False:
+                    if self.type1 == True:
+                        self.turrets.append(Basic_Turret(cell.posX + (cell.tam / 2), cell.posY + (cell.tam / 2)))
+                        #if no hay suficiente dinero:
+                        self.type1 = False
+                    elif self.type2 == True:
+                        self.turrets.append(Heavy_Turret(cell.posX + (cell.tam / 2), cell.posY + (cell.tam / 2)))
+                        #if no hay suficiente dinero:
+                        self.type2 = False
+                    elif self.type3 == True:
+                        self.turrets.append(LongRange_Turret(cell.posX + (cell.tam / 2), cell.posY + (cell.tam / 2)))
+                        #if no hay suficiente dinero:
+                        self.type3 = False
+                    cell.ocupied = True
 
     def changeTurretType(self, cell):
         if cell.id == (0, 2):
