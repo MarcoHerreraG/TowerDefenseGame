@@ -2,6 +2,7 @@ from enemy import Enemy
 from TankEnemy import TankEnemy
 from FastEnemy import FastEnemy
 from BasicEnemy import BasicEnemy
+import pygame
 import random
 
 class Enemy_Pool():
@@ -11,6 +12,8 @@ class Enemy_Pool():
         self.size = poolSize
         self.originX = deactiveX
         self.originY =deactiveY
+        self.spawnRate = 7
+        self.last = pygame.time.get_ticks()
 
     def fill_pool(self):
         for i in range(self.size):
@@ -23,7 +26,12 @@ class Enemy_Pool():
                 self.pool.append(TankEnemy(self.app, self.originX, self.originY))
 
     def spawn_enem(self, x, y):
-        
+        now = pygame.time.get_ticks()
+        i = 0
+        if(now - self.last >= self.spawnRate and i < self.size):
+            self.pool[i].start(x, y)
+            i = i + 1
+            self.last = pygame.time.get_ticks()
 
     def draw(self):
         for enemy in self.pool:
