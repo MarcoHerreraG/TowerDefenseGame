@@ -13,6 +13,7 @@ class Enemy:
         self.rect.x = x
         self.rect.y = y
         self.speed = None
+        self.Nexo = None
         self.tarx = 0
         self.tary = 0
         self.currentpos = pygame.Vector2(self.rect.x, self.rect.y)
@@ -22,10 +23,11 @@ class Enemy:
         self.nexty = 0
         self.i = 1
 
-    def start(self, x , y, coords, grid):
+    def start(self, x , y, coords, grid, Nexo):
         self.setspawn(x,y)
         self.coords = coords
         self.grid = grid
+        self.Nexo = Nexo
 
     def draw(self):
         self.screen.blit(self.image, self.currentpos)
@@ -50,13 +52,20 @@ class Enemy:
         self.currentpos.y = y1
     
     def coordstomove(self):
+        if(self.i > len(self.coords)-1):
+            self.takedamage(self.Nexo, self.damagetonexus)
+            self.active = False
+            return
         for cell in self.grid.grid:
             if cell.id[0] == self.coords[self.i][0] and cell.id[1] == self.coords[self.i][1]:
-                print(self.i)
-                self.nextx = cell.posX+5
-                self.nexty = cell.posY+5
+                self.nextx = cell.posX
+                self.nexty = cell.posY
         self.i = self.i + 1
         return 
+    
+    def takedamage(self, Nexo, ataque):
+        ataque = self.damagetonexus
+        self.Nexo.health = self.Nexo.health - ataque
     
 
 

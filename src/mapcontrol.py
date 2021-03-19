@@ -25,7 +25,7 @@ class Map:
         for cell in self.grid.grid:
             for id in self.coords:
                 if cell.id[0] == id[0] and cell.id[1] == id[1]:
-                    pygame.draw.rect(self.screen, (255,0,0), (cell.posX+5, cell.posY+5, 50, 50))
+                    '''pygame.draw.rect(self.screen, (255,0,0), (cell.posX+5, cell.posY+5, 50, 50))'''
     
     def update(self):
         pass

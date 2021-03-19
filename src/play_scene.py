@@ -19,20 +19,20 @@ class PlayScene(Scene):
         self.app = app
         self.grid = Grid()
         self.screen = app.screen
-        self.enemy = Enemy_Pool(app, 3, 900, 900, self.grid)
+        self.enemy = Enemy_Pool(app, 12, 900, 900, self.grid)
         self.turrets = []
         self.gamemap = Map(app, self.grid)
         self.leveltodraw = None
         self.level = 1
         self.testing = False
         self.wallet = 300
-        self.nexus = Nexus(self.grid)
+        self.nexus = Nexus()
         self.ui = UI(self.grid, self.turrets, self.wallet, self.nexus)
         super().__init__('PlayScene')
 
     def start(self):
         print('Se inicia:', self.name)
-        self.enemy.fill_pool()
+        self.enemy.start(self.nexus)
         if(self.level == 1):
             self.gamemap.maptext="level1.txt"
             self.gamemap.start("assets/images/lvl1.png")
@@ -45,7 +45,7 @@ class PlayScene(Scene):
             '''self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
 
     def update(self):
-        self.enemy.spawn_enem(self.gamemap.coords)
+        self.enemy.update(self.gamemap.coords)
         for e in self.enemy.pool:
             if e.health <= 0:
                 e.active = False
@@ -55,9 +55,10 @@ class PlayScene(Scene):
                 turret.fireInRange(en)
             turret.update()
         self.ui.update()
+        self.nexus.update()
 
     def draw(self):
-        self.screen.fill((255,255,255))
+        self.screen.fill((255,0,0))
         self.gamemap.draw(self.gamemap.rect)
         self.nexus.draw(self.screen)
         for turret in self.turrets:

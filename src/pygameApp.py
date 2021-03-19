@@ -18,7 +18,7 @@ class PyagemApp():
     def init_pygame(self):
         pygame.init()
         self.screen = pygame.display.set_mode((self.width,self.height))
-        self.clock = pygame.time.Clock()
+        self.clock = pygame.time.Clock() 
         self.load_assets()
         self.scenes = {'intro': IntroScene(self), 'play': PlayScene(self), 'over': GameOverScene(self)}
         self.change_scene('intro')
