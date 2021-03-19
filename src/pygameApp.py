@@ -12,7 +12,6 @@ class PyagemApp():
         self.active_scene = None
         self.width = 1000
         self.height = 631
-        self.font = None
         self.font2 = None
         self.init_pygame()
 
@@ -31,7 +30,7 @@ class PyagemApp():
         self.active_scene.start()
 
     def load_assets(self): 
-        pass
+        self.font = pygame.font.Font("Assets/Fonts/Taraka.ttf", 30)
 
     def process_events(self):
         for event in pygame.event.get():
