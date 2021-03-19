@@ -31,11 +31,11 @@ class Enemy_Pool():
         for a in range(self.size):
             self.enemy = random.randint(0, 4)
             if(self.enemy == 1):
-                self.pool.append(FastEnemy(self.app, self.originX, self.originY))
+                self.pool.append(BasicEnemy(self.app, self.originX, self.originY))
             elif(self.enemy == 2):
                 self.pool.append(FastEnemy(self.app, self.originX, self.originY))
             elif(self.enemy == 3):
-                self.pool.append(FastEnemy(self.app, self.originX, self.originY))
+                self.pool.append(TankEnemy(self.app, self.originX, self.originY))
 
     def spawn_enem(self, coords):
         now = pygame.time.get_ticks()
