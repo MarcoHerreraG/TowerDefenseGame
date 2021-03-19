@@ -19,7 +19,7 @@ class PlayScene(Scene):
         self.app = app
         self.grid = Grid()
         self.screen = app.screen
-        self.enemy = Enemy_Pool(app, 100, 900, 900, self.grid)
+        self.enemy = Enemy_Pool(app, 3, 900, 900, self.grid)
         self.turrets = []
         self.gamemap = Map(app, self.grid)
         self.leveltodraw = None

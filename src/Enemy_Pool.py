@@ -31,10 +31,11 @@ class Enemy_Pool():
 
     def spawn_enem(self, coords):
         now = pygame.time.get_ticks()
-        if(now - self.last >= self.spawnRate and self.i < self.size and self.pool[self.i].active == False):
-            print("estoy en loop")
-            for cell in self.grid.grid:
-                    if cell.id[0] == coords[0][0] and cell.id[1] == coords[0][1]:
-                        self.pool[self.i].start(cell.posX+5, cell.posY+5, coords, self.grid)
-            self.i = self.i + 1
-            self.last = pygame.time.get_ticks()
+        if(self.i < self.size-1):
+            if(now - self.last >= self.spawnRate and self.pool[self.i].active == False):
+                print("estoy en loop")
+                for cell in self.grid.grid:
+                        if cell.id[0] == coords[0][0] and cell.id[1] == coords[0][1]:
+                            self.pool[self.i].start(cell.posX+5, cell.posY+5, coords, self.grid)
+                self.i = self.i + 1
+                self.last = pygame.time.get_ticks()
