@@ -58,7 +58,6 @@ class PlayScene(Scene):
         self.nexus.update()
 
     def draw(self):
-        self.screen.fill((255,0,0))
         self.gamemap.draw(self.gamemap.rect)
         self.nexus.draw(self.screen)
         for turret in self.turrets:
