@@ -10,7 +10,7 @@ class TankEnemy(Enemy):
         , pygame.image.load('Assets/Images/Tank/Front/Tank6.png')]
         self.rect = self.anim[0].get_rect()
         self.health = 90
-        self.damagetonexus = 10
+        self.damagetonexus = 33
         self.rect.x = x
         self.rect.y = y
         self.speed = 2

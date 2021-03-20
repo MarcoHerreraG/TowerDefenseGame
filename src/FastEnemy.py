@@ -9,7 +9,7 @@ class FastEnemy(Enemy):
         pygame.image.load('Assets/Images/Fast/Front/Fast3.png'), pygame.image.load('Assets/Images/Fast/Front/Fast4.png'), pygame.image.load('Assets/Images/Fast/Front/Fast5.png')]
         self.rect = self.anim[0].get_rect()
         self.health = 200
-        self.damagetonexus = 2
+        self.damagetonexus = 11
         self.rect.x = x
         self.rect.y = y
         self.speed = 2.0

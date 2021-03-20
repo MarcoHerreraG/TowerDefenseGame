@@ -39,8 +39,6 @@ class PlayScene(Scene):
             self.gamemap.loadmap("level1.txt")
             
     def process_events(self, event):
-        if self.nexus.health <= 0:
-            self.app.change_scene('over')
         if event.type == pygame.KEYDOWN:
             '''self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
 
@@ -56,6 +54,8 @@ class PlayScene(Scene):
             turret.update()
         self.ui.update()
         self.nexus.update()
+        if self.nexus.health <= 0:
+            self.app.change_scene('over')
 
     def draw(self):
         self.screen.fill((255,0,0))
