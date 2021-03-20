@@ -5,7 +5,7 @@ from play_scene import PlayScene
 from over_scene import GameOverScene
 from Instruction_scene import InstructionScene
 
-class PyagemApp():
+class PygameApp():
     def __init__(self):
         self.running = True
         self.fps = 60
@@ -18,7 +18,7 @@ class PyagemApp():
     def init_pygame(self):
         pygame.init()
         self.screen = pygame.display.set_mode((self.width,self.height))
-        self.clock = pygame.time.Clock()
+        self.clock = pygame.time.Clock() 
         self.load_assets()
         self.scenes = {'intro': IntroScene(self), 'play': PlayScene(self), 'instructions' : InstructionScene(self) ,'over': GameOverScene(self)}
         self.change_scene('intro')
@@ -51,7 +51,7 @@ class PyagemApp():
             self.update()
             self.draw()
 
-app = PyagemApp()
+app = PygameApp()
 
 app.run()
 

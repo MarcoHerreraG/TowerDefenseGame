@@ -1,8 +1,8 @@
 import pygame
 import math
-from BasicEnemy import BasicEnemy
+from Basic_Enemy import Basic_Enemy
 
-class Map:
+class MapControl:
     def __init__(self, app, grid):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()
@@ -25,7 +25,7 @@ class Map:
         for cell in self.grid.grid:
             for id in self.coords:
                 if cell.id[0] == id[0] and cell.id[1] == id[1]:
-                    pygame.draw.rect(self.screen, (255,0,0), (cell.posX+5, cell.posY+5, 50, 50))
+                    '''pygame.draw.rect(self.screen, (255,0,0), (cell.posX+5, cell.posY+5, 50, 50))'''
     
     def update(self):
         pass
