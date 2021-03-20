@@ -5,7 +5,7 @@ from Play_Scene import Play_Scene
 from GameOver_Scene import GameOver_Scene
 
 
-class PyagemApp():
+class PygameApp():
     def __init__(self):
         self.running = True
         self.fps = 60
@@ -51,7 +51,7 @@ class PyagemApp():
             self.update()
             self.draw()
 
-app = PyagemApp()
+app = PygameApp()
 
 app.run()
 
