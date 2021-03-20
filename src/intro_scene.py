@@ -1,7 +1,7 @@
 from Scene import Scene
 import pygame
 
-class IntroScene(Scene):
+class Intro_Scene(Scene):
     def __init__(self, app):
         self.app = app
         self.screen = app.screen

@@ -1,9 +1,9 @@
 import pygame
 import asyncio
-from intro_scene import  IntroScene
-from play_scene import PlayScene
-from over_scene import GameOverScene
-from Instruction_scene import InstructionScene
+from Intro_Scene import  Intro_Scene
+from Play_Scene import Play_Scene
+from GameOver_Scene import GameOver_Scene
+from Instruction_Scene import Instruction_Scene
 
 class PygameApp():
     def __init__(self):
@@ -20,7 +20,7 @@ class PygameApp():
         self.screen = pygame.display.set_mode((self.width,self.height))
         self.clock = pygame.time.Clock() 
         self.load_assets()
-        self.scenes = {'intro': IntroScene(self), 'play': PlayScene(self), 'instructions' : InstructionScene(self) ,'over': GameOverScene(self)}
+        self.scenes = {'intro': Intro_Scene(self), 'play': Play_Scene(self), 'instructions' : Instruction_Scene(self) ,'over': GameOver_Scene(self)}
         self.change_scene('intro')
 
     def change_scene(self, scene_name):

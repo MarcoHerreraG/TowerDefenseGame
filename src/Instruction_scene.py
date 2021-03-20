@@ -1,7 +1,7 @@
 from Scene import Scene
 import pygame
 
-class InstructionScene(Scene):
+class Instruction_Scene(Scene):
     def __init__(self, app):
         self.app = app
         self.screen = app.screen
