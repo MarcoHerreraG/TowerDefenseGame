@@ -1,7 +1,7 @@
 import pygame
-from enemy import Enemy
+from Enemy import Enemy
 import math
-class FastEnemy(Enemy):
+class Fast_Enemy(Enemy):
     def __init__(self, app, x , y):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()

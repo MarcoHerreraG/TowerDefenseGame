@@ -1,7 +1,7 @@
 from Scene import Scene
 import pygame
 
-class GameOverScene(Scene):
+class GameOver_Scene(Scene):
     def __init__(self, app):
         self.app = app
         self.screen = app.screen

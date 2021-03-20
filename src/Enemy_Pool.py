@@ -1,7 +1,7 @@
-from enemy import Enemy
-from TankEnemy import TankEnemy
-from FastEnemy import FastEnemy
-from BasicEnemy import BasicEnemy
+from Enemy import Enemy
+from Tank_Enemy import Tank_Enemy
+from Fast_Enemy import Fast_Enemy
+from Basic_Enemy import Basic_Enemy
 import pygame
 import random
 
@@ -31,11 +31,11 @@ class Enemy_Pool():
         for a in range(self.size):
             self.enemy = random.randint(0, 4)
             if(self.enemy == 1):
-                self.pool.append(BasicEnemy(self.app, self.originX, self.originY))
+                self.pool.append(Basic_Enemy(self.app, self.originX, self.originY))
             elif(self.enemy == 2):
-                self.pool.append(FastEnemy(self.app, self.originX, self.originY))
+                self.pool.append(Fast_Enemy(self.app, self.originX, self.originY))
             elif(self.enemy == 3):
-                self.pool.append(TankEnemy(self.app, self.originX, self.originY))
+                self.pool.append(Tank_Enemy(self.app, self.originX, self.originY))
 
     def spawn_enem(self, coords):
         now = pygame.time.get_ticks()

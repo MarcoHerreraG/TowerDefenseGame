@@ -1,12 +1,12 @@
 from Nexus import Nexus
 from Scene import Scene
-from enemy import Enemy
+from Enemy import Enemy
 from Enemy_Pool import Enemy_Pool
 from Turret import Turret
 from Basic_Turret import Basic_Turret
 from Heavy_Turret import Heavy_Turret
 from LongRange_Turret import LongRange_Turret
-from mapcontrol import Map
+from MapControl import MapControl
 from Grid import Grid
 from UI import UI
 import pygame
@@ -14,14 +14,14 @@ import asyncio
 import time
 import random
 
-class PlayScene(Scene):
+class Play_Scene(Scene):
     def __init__(self, app):
         self.app = app
         self.grid = Grid()
         self.screen = app.screen
         self.enemy = Enemy_Pool(app, 20, 900, 900, self.grid)
         self.turrets = []
-        self.gamemap = Map(app, self.grid)
+        self.gamemap = MapControl(app, self.grid)
         self.leveltodraw = None
         self.level = 1
         self.testing = False

@@ -1,4 +1,5 @@
 import pygame
+
 class Nexus:
     def __init__(self):
         self.health = 72
@@ -12,5 +13,3 @@ class Nexus:
     
     def takedamage(self, damage):
         self.health = self.health - damage
-
-
