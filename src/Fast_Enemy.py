@@ -1,5 +1,5 @@
 import pygame
-from Enemy import Enemy
+from enemy import Enemy
 import math
 
 class Fast_Enemy(Enemy):

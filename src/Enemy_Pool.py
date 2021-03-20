@@ -1,4 +1,4 @@
-from Enemy import Enemy
+from enemy import Enemy
 from Tank_Enemy import Tank_Enemy
 from Fast_Enemy import Fast_Enemy
 from Basic_Enemy import Basic_Enemy

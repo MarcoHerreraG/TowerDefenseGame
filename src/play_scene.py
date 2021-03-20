@@ -1,12 +1,12 @@
 from Nexus import Nexus
 from Scene import Scene
-from Enemy import Enemy
+from enemy import Enemy
 from Enemy_Pool import Enemy_Pool
 from Turret import Turret
 from Basic_Turret import Basic_Turret
 from Heavy_Turret import Heavy_Turret
 from LongRange_Turret import LongRange_Turret
-from MapControl import MapControl
+from mapcontrol import MapControl
 from Grid import Grid
 from UI import UI
 import pygame

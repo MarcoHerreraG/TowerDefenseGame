@@ -1,9 +1,9 @@
 import pygame
 import asyncio
-from Intro_Scene import  Intro_Scene
-from Play_Scene import Play_Scene
+from intro_scene import  Intro_Scene
+from play_scene import Play_Scene
 from GameOver_Scene import GameOver_Scene
-from Instruction_Scene import Instruction_Scene
+from Instruction_scene import Instruction_Scene
 
 class PygameApp():
     def __init__(self):
