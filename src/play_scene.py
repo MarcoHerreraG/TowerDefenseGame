@@ -25,9 +25,8 @@ class PlayScene(Scene):
         self.leveltodraw = None
         self.level = 1
         self.testing = False
-        self.wallet = 300
         self.nexus = Nexus()
-        self.ui = UI(self.grid, self.turrets, self.wallet, self.nexus)
+        self.ui = UI(self.grid, self.turrets, self.nexus)
         super().__init__('PlayScene')
 
     def start(self):
@@ -50,12 +49,16 @@ class PlayScene(Scene):
             e.update()
         for turret in self.turrets:
             for en in self.enemy.pool:
-                turret.fireInRange(en)
+                if en.active == True:
+                    turret.fireInRange(en)
+                    if en.health <= 0:
+                        self.ui.wallet += en.moneyDrop
             turret.update()
         self.ui.update()
         self.nexus.update()
         if self.nexus.health <= 0:
             self.app.change_scene('over')
+        print(self.ui.wallet)
 
     def draw(self):
         self.screen.fill((255,0,0))

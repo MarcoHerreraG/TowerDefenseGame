@@ -34,21 +34,20 @@ class Turret:
         target.health -= self.damage
 
     def fireInRange(self, target):
-        if(target.active == True):
-            targetPosX = target.currentpos.x
-            targetPosY = target.currentpos.y
-            targetTamX = 60
-            targetTamY = 60
-            targetX = targetPosX + (targetTamX / 2)
-            targetY = targetPosY + (targetTamY / 2)
-            h = targetY - self.posY
-            w = targetX -  self.posX
-            d = math.sqrt(h * h + w * w)
-            if(d < self.range):
-                now = pygame.time.get_ticks()
-                if now - self.last >= self.shootingSpeed:
-                    self.fire(target)
-                    self.last = pygame.time.get_ticks()
+        targetPosX = target.currentpos.x
+        targetPosY = target.currentpos.y
+        targetTamX = 60
+        targetTamY = 60
+        targetX = targetPosX + (targetTamX / 2)
+        targetY = targetPosY + (targetTamY / 2)
+        h = targetY - self.posY
+        w = targetX -  self.posX
+        d = math.sqrt(h * h + w * w)
+        if(d < self.range):
+            now = pygame.time.get_ticks()
+            if now - self.last >= self.shootingSpeed:
+                self.fire(target)
+                self.last = pygame.time.get_ticks()
 
     def draw(self, screen):
         self.gun.draw(screen)

@@ -8,8 +8,8 @@ class FastEnemy(Enemy):
         self.anim = [pygame.image.load('Assets/Images/Fast/Front/Fast0.png'), pygame.image.load('Assets/Images/Fast/Front/Fast1.png'), pygame.image.load('Assets/Images/Fast/Front/Fast2.png'), 
         pygame.image.load('Assets/Images/Fast/Front/Fast3.png'), pygame.image.load('Assets/Images/Fast/Front/Fast4.png'), pygame.image.load('Assets/Images/Fast/Front/Fast5.png')]
         self.rect = self.anim[0].get_rect()
-        self.health = 200
-        self.damagetonexus = 11
+        self.health = 150
+        self.damagetonexus = 1
         self.rect.x = x
         self.rect.y = y
         self.speed = 2.0
@@ -25,6 +25,7 @@ class FastEnemy(Enemy):
         self.nextx = 0
         self.nexty = 0
         self.i = 1
+        self.moneyDrop = 15 
 
     def start(self, x , y,coords, grid, Nexo):
         self.setspawn(x,y)

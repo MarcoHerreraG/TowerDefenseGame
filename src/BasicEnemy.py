@@ -9,10 +9,10 @@ class BasicEnemy(Enemy):
         pygame.image.load('Assets/Images/Basic/Front/Basic3.png'), pygame.image.load('Assets/Images/Basic/Front/Basic4.png')]
         self.rect = self.anim[0].get_rect()
         self.health = 200
-        self.damagetonexus = 22
+        self.damagetonexus = 2
         self.rect.x = x
         self.rect.y = y
-        self.speed = 2.0
+        self.speed = 1.5
         self.tarx = 0
         self.tary = 0
         self.active = False
@@ -25,6 +25,7 @@ class BasicEnemy(Enemy):
         self.nextx = 0
         self.nexty = 0
         self.i = 1
+        self.moneyDrop = 20 
 
     def start(self, x , y,coords, grid, Nexo):
         self.setspawn(x,y)

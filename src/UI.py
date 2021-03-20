@@ -5,7 +5,7 @@ from LongRange_Turret import LongRange_Turret
 import pygame
 
 class UI:
-    def __init__(self, grid, turrets, wallet, nexus):
+    def __init__(self, grid, turrets, nexus):
         self.turretsSpawn = [(1, 6), (1, 7), (3, 4), (3, 6), (3, 7), (3, 8), (4, 4), (5, 4), (7, 5), (7, 6), (9, 2), (9, 4), (9, 6), (9, 7), (9, 8), (10, 4), (11, 3), (11, 5), (11, 7), (11, 9), (12, 9), (13, 4), (13, 5), (13, 6), (13, 7), (13, 8), (13, 9), (14, 9), (15, 2), (15, 6), (15, 7)] 
         self.mousePos = (0, 0)
         self.grid = grid
@@ -13,7 +13,7 @@ class UI:
         self.type1 = False #Basic
         self.type2 = False #Heavy
         self.type3 = False #Long
-        self.wallet = wallet
+        self.wallet = 300
         self.health = nexus.health
 
     def spawnTurret(self, cell):
@@ -38,15 +38,15 @@ class UI:
                     cell.ocupied = True
 
     def changeTurretType(self, cell):
-        if cell.id == (0, 2):
+        if cell.id == (0, 2) and self.wallet >= 100:
             self.type1 = True
             self.type2 = False
             self.type3 = False
-        elif cell.id == (0, 3):
+        elif cell.id == (0, 3) and self.wallet >= 200:
             self.type1 = False
             self.type2 = True
             self.type3 = False
-        elif cell.id == (0, 4):
+        elif cell.id == (0, 4) and self.wallet >= 300:
             self.type1 = False
             self.type2 = False
             self.type3 = True
