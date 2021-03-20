@@ -19,14 +19,14 @@ class Play_Scene(Scene):
         self.app = app
         self.grid = Grid()
         self.screen = app.screen
-        self.enemy = Enemy_Pool(app, 20, 900, 900, self.grid)
+        self.enemy = Enemy_Pool(app, 5, 900, 900, self.grid)
         self.turrets = []
         self.gamemap = MapControl(app, self.grid)
         self.leveltodraw = None
         self.level = 1
         self.testing = False
         self.nexus = Nexus()
-        self.ui = UI(self.grid, self.turrets, self.nexus)
+        self.ui = UI(self.grid, self.turrets, self.nexus, self.app)
         super().__init__('PlayScene')
 
     def start(self):
@@ -54,11 +54,11 @@ class Play_Scene(Scene):
                     if en.health <= 0:
                         self.ui.wallet += en.moneyDrop
             turret.update()
-        self.ui.update()
+        self.ui.update(self.enemy)
         self.nexus.update()
         if self.nexus.health <= 0:
             self.app.change_scene('over')
-        print(self.ui.wallet)
+        
 
     def draw(self):
         self.screen.fill((255,0,0))

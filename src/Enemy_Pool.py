@@ -19,6 +19,7 @@ class Enemy_Pool():
         self.nextx = 1
         self.nexty = 1
         self.Nexo = None
+        self.waveOver = False
 
     def start(self, Nexo):
         self.fill_pool(Nexo)
@@ -26,6 +27,7 @@ class Enemy_Pool():
 
     def update(self, coords):
         self.spawn_enem(coords)
+        self.check_round()
 
     def fill_pool(self, Nexo):
         for a in range(self.size):
@@ -46,3 +48,8 @@ class Enemy_Pool():
                     self.pool[self.i].start(cell.posX+5, cell.posY+5, coords, self.grid, self.Nexo)
                     self.i = self.i + 1
                     self.last = pygame.time.get_ticks()
+
+    def check_round(self):
+        if(self.i == len(self.pool)):
+            if(self.pool[self.i-1].active == False):
+                self.waveOver = True
