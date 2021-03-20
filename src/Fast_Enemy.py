@@ -1,6 +1,7 @@
 import pygame
 from Enemy import Enemy
 import math
+
 class Fast_Enemy(Enemy):
     def __init__(self, app, x , y):
         self.screen = app.screen
@@ -41,7 +42,3 @@ class Fast_Enemy(Enemy):
                 self.loopCount = 0
             self.screen.blit(self.anim[self.loopCount//30], self.currentpos)
             self.loopCount+=1
- 
-
-
-

@@ -4,7 +4,6 @@ from Bullet_Pool import Bullet_Pool
 from Turret import Turret
 
 class Heavy_Turret(Turret):
-
     def __init__(self, posX, posY):
         self.tamX = 30
         self.tamY = 30

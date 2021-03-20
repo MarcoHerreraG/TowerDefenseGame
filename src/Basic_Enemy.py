@@ -1,6 +1,7 @@
 import pygame
 from Enemy import Enemy
 import math
+
 class Basic_Enemy(Enemy):
     def __init__(self, app, x , y):
         self.screen = app.screen

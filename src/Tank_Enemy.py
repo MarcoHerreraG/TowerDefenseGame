@@ -1,6 +1,7 @@
 import pygame
 from Enemy import Enemy
 import math
+
 class Tank_Enemy(Enemy):
     def __init__(self, app, x , y):
         self.screen = app.screen
@@ -35,11 +36,9 @@ class Tank_Enemy(Enemy):
         self.coordstomove()
         self.Nexo = Nexo
 
-
     def draw(self):
         if(self.active):
             if(self.loopCount + 1 >= 70):
                 self.loopCount = 0
             self.screen.blit(self.anim[self.loopCount//10], self.currentpos)
             self.loopCount+=1
-    

@@ -55,4 +55,4 @@ app = PygameApp()
 
 app.run()
 
-pygame.quit() 
+pygame.quit()

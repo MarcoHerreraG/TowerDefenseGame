@@ -36,6 +36,5 @@ class Instruction_Scene(Scene):
         self.screen.blit(self.subtitle2, self.subtitle2_rect)
         self.screen.blit(self.subtitle3, self.subtitle3_rect)
 
-
     def exit(self):
         print('Termina:', self.name)

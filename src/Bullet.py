@@ -2,7 +2,6 @@ import pygame
 import math
 
 class Bullet():
-
     def __init__(self, originX, originY):
         self.originX = originX
         self.originY = originY

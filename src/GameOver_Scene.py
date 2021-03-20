@@ -32,6 +32,5 @@ class GameOver_Scene(Scene):
         self.screen.blit(self.subtitle2, self.subtitle2_rect)
         self.screen.blit(self.subtitle, self.subtitle_rect)
 
-
     def exit(self):
         print('Termina:', self.name)

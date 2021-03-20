@@ -67,8 +67,3 @@ class Enemy:
         ataque = self.damagetonexus
         #self.Nexo.health = self.Nexo.health - ataque
         self.Nexo.takedamage(ataque)
-    
-
-
-
-

@@ -39,4 +39,3 @@ class MapControl:
                     line = [int(i) for i in line]
                     self.coords.append((line))
         print("Termine de leer el mapa, cargando mapa")
-    
