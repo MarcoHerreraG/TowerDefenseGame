@@ -21,7 +21,10 @@ class IntroScene(Scene):
 
     def process_events(self, event):
         if event.type == pygame.KEYDOWN:
-            self.app.change_scene('play')
+            if event.key == pygame.K_RETURN:
+                self.app.change_scene('play')
+            elif event.key == pygame.K_i:
+                self.app.change_scene('instructions')
 
     def update(self):
         pass
