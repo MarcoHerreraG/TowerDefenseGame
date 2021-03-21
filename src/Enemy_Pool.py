@@ -29,8 +29,6 @@ class Enemy_Pool():
     def update(self, coords):
         self.spawn_enem(coords)
         #self.check_round()
-        if(self.pool[-1].active):
-            print("spawn enem is over")
 
     def fill_pool(self):
         for a in range(self.size):
@@ -53,9 +51,10 @@ class Enemy_Pool():
 
     def check_round(self):
         if(self.pool[-1].active == False):
-            print("=========================")
             self.waveOver = True
             self.add_enemies()
+            print("entra aqui")
+            #self.i = 0
 
     def add_enemies(self):
         for a in range(self.wave_increase):

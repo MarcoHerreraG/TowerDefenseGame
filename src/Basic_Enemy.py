@@ -13,7 +13,7 @@ class Basic_Enemy(Enemy):
         self.damagetonexus = 2
         self.rect.x = x
         self.rect.y = y
-        self.speed = 1.5
+        self.speed = 0.6
         self.tarx = 0
         self.tary = 0
         self.active = False
