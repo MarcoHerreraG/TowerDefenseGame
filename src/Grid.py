@@ -1,5 +1,8 @@
 from Cell import Cell 
 
+'''
+clase usada para gestionar el tablero en sectores
+'''
 class Grid:
     def __init__(self):
         self.grid = []

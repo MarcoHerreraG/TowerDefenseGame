@@ -36,6 +36,9 @@ class UI:
         self.basic_price = pygame.image.load('Assets/Images/Icons/Precios-3.png')
         self.basic_rect = self.basic_price.get_rect()
 
+    '''
+    aparece la torreta especificada en la celda especificada si se tiene el dinero suficiente y si la celda esta disponible
+    '''
     def spawnTurret(self, cell):
         for spawn in self.turretsSpawn:
             if cell.id == spawn:
@@ -57,6 +60,9 @@ class UI:
                             self.type3 = False
                     cell.ocupied = True
 
+    '''
+    cambia el tipo de torreta especificada segun la celda seleccionada
+    '''
     def changeTurretType(self, cell):
         if cell.id == (0, 2) and self.wallet >= 100:
             self.type1 = True
@@ -71,6 +77,9 @@ class UI:
             self.type2 = False
             self.type3 = True
 
+    '''
+    obtiene el click izquierdo del jugador y llama a spawnTurret() y changeTurretType()
+    '''
     def getLeftClick(self):
         if pygame.mouse.get_pressed() == (1, 0, 0):
             for cell in self.grid.grid:
