@@ -26,6 +26,12 @@ class UI:
         self.counter_rect.center = (app.width//2, app.height - 400)
         self.cooldown = 0
         self.restarted = False
+        self.ranged_price = pygame.image.load('Assets/Images/Icons/Precios-1.png')
+        self.ranged_rect = self.ranged_price.get_rect()
+        self.tank_price = pygame.image.load('Assets/Images/Icons/Precios-2.png')
+        self.tank_rect = self.tank_price.get_rect()
+        self.basic_price = pygame.image.load('Assets/Images/Icons/Precios-3.png')
+        self.basic_rect = self.basic_price.get_rect()
 
     def spawnTurret(self, cell):
         for spawn in self.turretsSpawn:
@@ -90,20 +96,23 @@ class UI:
     def draw(self, screen, enem):
         for cell in self.grid.grid:
             if cell.id == (0, 2):
-                cell.color = (255, 0, 255)
-                if self.type1 == True:
-                    cell.color = (255, 255, 255)
-                cell.draw(screen)
+                self.basic_rect.x = cell.posX
+                self.basic_rect.y = cell.posY
+                self.basic_pos = pygame.Vector2(self.basic_rect.x, self.basic_rect.y)
+                screen.blit(self.basic_price, self.basic_pos)
+
             if cell.id == (0, 3):
-                cell.color = (255, 0, 0)
-                if self.type2 == True:
-                    cell.color = (255, 255, 255)
-                cell.draw(screen)
+                self.tank_rect.x = cell.posX
+                self.tank_rect.y = cell.posY
+                self.tank_pos = pygame.Vector2(self.tank_rect.x, self.tank_rect.y)
+                screen.blit(self.tank_price, self.tank_pos)
+
             if cell.id == (0, 4):
-                cell.color = (0, 255, 0)
-                if self.type3 == True:
-                    cell.color = (255, 255, 255)
-                cell.draw(screen)
+                self.ranged_rect.x = cell.posX
+                self.ranged_rect.y = cell.posY
+                self.ranged_pos = pygame.Vector2(self.ranged_rect.x, self.ranged_rect.y)
+                screen.blit(self.ranged_price, self.ranged_pos)
+
         self.screen.blit(self.money, self.money_rect)
         if(enem.endRound == True):
             self.screen.blit(self.counter, self.counter_rect)
