@@ -75,7 +75,7 @@ class UI:
         self.getLeftClick()
         self.money = self.app.font.render("Money: " + str(self.wallet), True, (255,255,255))
         self.now = pygame.time.get_ticks()
-        if(enem.waveOver == True):
+        if(enem.endRound == True):
             self.restarted = True
             self.cooldown -= (self.now - self.last)
             self.temp = (int)(self.cooldown/1000)*-1
@@ -83,6 +83,8 @@ class UI:
             print(self.temp)
             self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " +  str(self.temp2- self.temp), True, (255,255,255))
             self.last = pygame.time.get_ticks()
+            if(self.temp2 - self.temp <= 0):
+                enem.check_round()
     
     def draw(self, screen, enem):
         for cell in self.grid.grid:
@@ -102,7 +104,7 @@ class UI:
                     cell.color = (255, 255, 255)
                 cell.draw(screen)
         self.screen.blit(self.money, self.money_rect)
-        if(enem.waveOver == True):
+        if(enem.endRound == True):
             self.screen.blit(self.counter, self.counter_rect)
 
     def restart(self):
