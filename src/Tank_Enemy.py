@@ -3,12 +3,10 @@ from enemy import Enemy
 import math
 
 class Tank_Enemy(Enemy):
-    def __init__(self, app, x , y):
+    def __init__(self, app, x , y, anim):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()
-        self.animation = [pygame.image.load('Assets/Images/Tank/Front/Tank0.png'), pygame.image.load('Assets/Images/Tank/Front/Tank1.png'), pygame.image.load('Assets/Images/Tank/Front/Tank2.png'), 
-        pygame.image.load('Assets/Images/Tank/Front/Tank3.png'), pygame.image.load('Assets/Images/Tank/Front/Tank4.png'), pygame.image.load('Assets/Images/Tank/Front/Tank5.png')
-        , pygame.image.load('Assets/Images/Tank/Front/Tank6.png')]
+        self.animation = anim
         self.rect = self.animation[0].get_rect()
         self.health = 300
         self.damageToNexus = 3

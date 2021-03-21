@@ -3,11 +3,10 @@ from enemy import Enemy
 import math
 
 class Basic_Enemy(Enemy):
-    def __init__(self, app, x , y):
+    def __init__(self, app, x , y, anim):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()
-        self.animation = [pygame.image.load('Assets/Images/Basic/Front/Basic0.png'), pygame.image.load('Assets/Images/Basic/Front/Basic1.png'), pygame.image.load('Assets/Images/Basic/Front/Basic2.png'), 
-        pygame.image.load('Assets/Images/Basic/Front/Basic3.png'), pygame.image.load('Assets/Images/Basic/Front/Basic4.png')]
+        self.animation = anim
         self.rect = self.animation[0].get_rect()
         self.health = 200
         self.damageToNexus = 2
