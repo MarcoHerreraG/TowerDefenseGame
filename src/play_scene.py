@@ -19,7 +19,7 @@ class Play_Scene(Scene):
         self.app = app
         self.grid = Grid()
         self.screen = app.screen
-        self.enemy = Enemy_Pool(app, 3, 900, 900, self.grid)
+        self.enemy = Enemy_Pool(app, 1, 900, 900, self.grid)
         self.turrets = []
         self.gameMap = MapControl(app, self.grid)
         self.levelToDraw = None
@@ -67,7 +67,7 @@ class Play_Scene(Scene):
             turret.draw(self.screen)
         for e in self.enemy.pool:
             e.draw()
-        self.ui.draw(self.screen)
+        self.ui.draw(self.screen, self.enemy)
 
     def exit(self):
         print('Termina:', self.name)
