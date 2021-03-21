@@ -8,7 +8,7 @@ class Bullet():
         self.tam = 3
         self.posX = self.originX
         self.posY = self.originY
-        self.speed = 10
+        self.speed = 1.5
         self.shot = False
         self.targetPosX = 0
         self.targetPosY = 0
