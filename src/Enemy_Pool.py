@@ -72,11 +72,11 @@ class Enemy_Pool():
         for a in range(self.wave_increase):
             self.enemy = random.randint(1, 3)
             if(self.enemy == 1):
-                self.pool.append(Basic_Enemy(self.app, self.originX, self.originY))
+                self.pool.append(Basic_Enemy(self.app, self.originX, self.originY, self.basic_anim))
             elif(self.enemy == 2):
-                self.pool.append(Fast_Enemy(self.app, self.originX, self.originY))
+                self.pool.append(Fast_Enemy(self.app, self.originX, self.originY, self.fast_anim))
             elif(self.enemy == 3):
-                self.pool.append(Tank_Enemy(self.app, self.originX, self.originY))
+                self.pool.append(Tank_Enemy(self.app, self.originX, self.originY, self.tank_anim))
         self.i = 0
         self.endRound = False
     
