@@ -1,6 +1,6 @@
 class Scene():
     '''CLASE ABSTRACTA SCENE PA CREAR ESCENAS EN PYGAME'''
-    def __init__(self,name):
+    def __init__(self, name):
         self.name = name
         print('Se crea escena:', self.name)
 

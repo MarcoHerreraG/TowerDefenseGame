@@ -12,19 +12,19 @@ class Enemy_Pool():
         self.size = poolSize
         self.wave_increase = 3
         self.originX = deactiveX
-        self.originY =deactiveY
+        self.originY = deactiveY
         self.spawnRate = 5000
         self.last = pygame.time.get_ticks()
         self.i = 0
         self.grid = grid
-        self.nextx = 1
-        self.nexty = 1
-        self.Nexo = None
+        self.nextX = 1
+        self.nextY = 1
+        self.nexus = None
         self.waveOver = False
 
-    def start(self, Nexo):
+    def start(self, nexus):
         self.fill_pool()
-        self.Nexo = Nexo
+        self.nexus = nexus
 
     def update(self, coords):
         self.spawn_enem(coords)
@@ -45,7 +45,7 @@ class Enemy_Pool():
         if(now - self.last >= self.spawnRate and self.i < len(self.pool) and self.pool[self.i].active == False):
             for cell in self.grid.grid:
                 if cell.id[0] == coords[0][0] and cell.id[1] == coords[0][1]:
-                    self.pool[self.i].start(cell.posX+5, cell.posY+5, coords, self.grid, self.Nexo)
+                    self.pool[self.i].start(cell.posX + 5, cell.posY + 5, coords, self.grid, self.nexus)
                     self.i = self.i + 1
                     self.last = pygame.time.get_ticks()
 
@@ -58,7 +58,7 @@ class Enemy_Pool():
 
     def add_enemies(self):
         for a in range(self.wave_increase):
-            self.enemy = random.randint(0, 4)
+            self.enemy = random.randint(1, 3)
             if(self.enemy == 1):
                 self.pool.append(Basic_Enemy(self.app, self.originX, self.originY))
             elif(self.enemy == 2):

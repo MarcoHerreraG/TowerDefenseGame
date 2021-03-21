@@ -21,8 +21,8 @@ class Play_Scene(Scene):
         self.screen = app.screen
         self.enemy = Enemy_Pool(app, 3, 900, 900, self.grid)
         self.turrets = []
-        self.gamemap = MapControl(app, self.grid)
-        self.leveltodraw = None
+        self.gameMap = MapControl(app, self.grid)
+        self.levelToDraw = None
         self.level = 1
         self.testing = False
         self.nexus = Nexus()
@@ -33,16 +33,15 @@ class Play_Scene(Scene):
         print('Se inicia:', self.name)
         self.enemy.start(self.nexus)
         if(self.level == 1):
-            self.gamemap.maptext="level1.txt"
-            self.gamemap.start("assets/images/lvl1.png")
-            self.gamemap.loadmap("level1.txt")
+            self.gameMap.mapText="level1.txt"
+            self.gameMap.start("assets/images/lvl1.png")
+            self.gameMap.loadmap("level1.txt")
             
     def process_events(self, event):
-        if event.type == pygame.KEYDOWN:
-            '''self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
+        pass
 
     def update(self):
-        self.enemy.update(self.gamemap.coords)
+        self.enemy.update(self.gameMap.coords)
         for e in self.enemy.pool:
             if e.health <= 0:
                 e.active = False
@@ -62,7 +61,7 @@ class Play_Scene(Scene):
 
     def draw(self):
         self.screen.fill((255,0,0))
-        self.gamemap.draw(self.gamemap.rect)
+        self.gameMap.draw(self.gameMap.rect)
         self.nexus.draw(self.screen)
         for turret in self.turrets:
             turret.draw(self.screen)
