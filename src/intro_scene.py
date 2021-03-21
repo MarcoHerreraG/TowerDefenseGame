@@ -19,9 +19,12 @@ class Intro_Scene(Scene):
         self.subtitle3_rect.center = (app.width // 2, app.height // 2 + 240)
         super().__init__('IntroScene')
 
+    #Aquí, el print ayuda a saber si se entró a la escena de manera correcta.
     def start(self):
         print('Se inicia:', self.name)
 
+    #process_events detecta cualquier evento, en este caso siendo teclas presionadas, las cuales se pueden usar
+    #como booleanos para cambiar escenas
     def process_events(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
@@ -33,7 +36,8 @@ class Intro_Scene(Scene):
 
     def update(self):
         pass
-
+    
+    #screen blit está cargando el texto puesto
     def draw(self):
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.title, self.title_rect)
