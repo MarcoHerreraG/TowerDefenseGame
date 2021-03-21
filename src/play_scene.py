@@ -39,7 +39,8 @@ class Play_Scene(Scene):
             
     def process_events(self, event):
         pass
-
+    
+    #Aquí, el update the play_scene actualiza todos los elementos del juego que lo requieren
     def update(self):
         self.enemy.update(self.gameMap.coords)
         for e in self.enemy.pool:
@@ -60,6 +61,7 @@ class Play_Scene(Scene):
         if self.enemy.currentRound >= 11:
             self.app.change_scene('victory')
 
+    #Aquí, el update the play_scene dibuja todos los elementos del juego que lo requieren
     def draw(self):
         self.screen.fill((255,0,0))
         self.gameMap.draw(self.gameMap.rect)
