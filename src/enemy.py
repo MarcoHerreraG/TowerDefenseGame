@@ -23,20 +23,41 @@ class Enemy:
         self.nextY = 0
         self.i = 1
 
+<<<<<<< HEAD
     def start(self, x, y, coords, grid, nexus):
         self.setSpawn(x, y)
+=======
+    '''***
+        START DEL ENEMIGO, SETEA UN SPAWN AL ENEMIGO
+    ***'''
+    def start(self, x , y, coords, grid, nexus):
+        self.setSpawn(x,y)
+>>>>>>> sushirod
         self.coords = coords
         self.grid = grid
         self.nexus = nexus
 
+    '''***
+        INICIA A DIBUJAR EL ENEMIGO EL JUEGO
+    ***'''
     def draw(self):
         self.screen.blit(self.image, self.currentPos)
     
+        '''***
+        MANTIENE AL ENEMIGO EJECUTANDO SUS FUNCIONES
+    ***'''
     def update(self):
         if(self.active):
             self.moveToTarget(self.nextX, self.nextY, self.speed)
     
+<<<<<<< HEAD
     def moveToTarget(self, targetX, targetY, speed):
+=======
+        '''***
+        LE DICE AL ENEMIGO A DONDE TIENE QUE IR (X,Y)
+    ***'''
+    def moveToTarget(self, targetX , targetY, speed):
+>>>>>>> sushirod
         self.movement = True
         h = targetY - self.currentPos.y
         w = targetX - self.currentPos.x
@@ -47,10 +68,16 @@ class Enemy:
         else:
             self.coordsToMove()
 
+    '''***
+        MUEVE AL ENEMIGO AL PUNTO DADO
+    ***'''
     def setSpawn(self, x1, y1):
         self.currentPos.x = x1
         self.currentPos.y = y1
     
+        '''***
+        CREA UNA LISTA CON LOS PUNTOS CARGADOS DEL NIVEL
+    ***'''
     def coordsToMove(self):
         if(self.i > len(self.coords) - 1):
             self.damageNexus(self.nexus, self.damageToNexus)
@@ -63,6 +90,10 @@ class Enemy:
         self.i = self.i + 1
         return 
     
+
+        '''***
+        HACE DAÑO AL NEXO (depende del enemigo)
+    ***'''
     def damageNexus(self, nexus, attack):
         attack = self.damageToNexus
         #self.nexus.health = self.nexus.health - attack
