@@ -66,6 +66,7 @@ class Enemy_Pool():
     def check_round(self):
         if self.endRound == True:
             self.add_enemies()
+            self.respawnenemy()
             print("entra aqui")
 
     def add_enemies(self):
@@ -79,3 +80,9 @@ class Enemy_Pool():
                 self.pool.append(Tank_Enemy(self.app, self.originX, self.originY))
         self.i = 0
         self.endRound = False
+    
+    def respawnenemy(self):
+        self.run = 0
+        for a in self.pool:
+            self.pool[self.run].i = 0
+            self.run+=1
