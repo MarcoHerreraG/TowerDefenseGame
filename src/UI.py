@@ -18,15 +18,14 @@ class UI:
         self.health = nexus.health
         self.app = app
         self.screen = app.screen
-        self.last = pygame.time.get_ticks()
         self.money = app.font.render("Money: " + str(self.wallet), True, (255,255,255))
         self.money_rect = self.money.get_rect()
         self.money_rect.center = (app.width//2, app.height//2)
         self.counter = app.font.render("Tiempo hasta la siguiente oleada: ", True, (255,255,255))
         self.counter_rect = self.counter.get_rect()
         self.counter_rect.center = (app.width//2, app.height - 400)
-        self.cooldown = 1000
-
+        self.cooldown = 0
+        self.restarted = False
     def spawnTurret(self, cell):
         for spawn in self.turretsSpawn:
             if cell.id == spawn:
@@ -70,13 +69,17 @@ class UI:
                     self.changeTurretType(cell)
 
     def update(self, enem):
+        self.restart()
+        self.restarted = False
         self.mousePos = pygame.mouse.get_pos()
         self.getLeftClick()
         self.money = self.app.font.render("Money: " + str(self.wallet), True, (255,255,255))
         self.now = pygame.time.get_ticks()
-        self.cooldown -= (self.now - self.last)
-        self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " + str(self.cooldown/1000), True, (255,255,255))
-        self.last = pygame.time.get_ticks()
+        if(enem.waveOver == True):
+            self.restarted = True
+            self.cooldown -= (self.now - self.last)
+            self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " + str((int)(self.cooldown/1000)*-1), True, (255,255,255))
+            self.last = pygame.time.get_ticks()
     
     def draw(self, screen):
         for cell in self.grid.grid:
@@ -97,3 +100,8 @@ class UI:
                 cell.draw(screen)
         self.screen.blit(self.money, self.money_rect)
         self.screen.blit(self.counter, self.counter_rect)
+
+    def restart(self):
+        if(self.restarted == False):
+            self.cooldown = 0
+            self.last = pygame.time.get_ticks()

@@ -28,7 +28,11 @@ class Enemy_Pool():
 
     def update(self, coords):
         self.spawn_enem(coords)
-        #self.check_round()
+        self.endRound = True
+        for a in self.pool:
+            if a.active == True:
+                self.endRound = False
+        self.check_round()
 
     def fill_pool(self):
         for a in range(self.size):
@@ -50,7 +54,7 @@ class Enemy_Pool():
                     self.last = pygame.time.get_ticks()
 
     def check_round(self):
-        if(self.pool[-1].active == False):
+        if self.endRound == True:
             self.waveOver = True
             self.add_enemies()
             print("entra aqui")
@@ -65,3 +69,4 @@ class Enemy_Pool():
                 self.pool.append(Fast_Enemy(self.app, self.originX, self.originY))
             elif(self.enemy == 3):
                 self.pool.append(Tank_Enemy(self.app, self.originX, self.originY))
+        self.i = 0
