@@ -7,7 +7,7 @@ class Intro_Scene(Scene):
         self.screen = app.screen
         self.title = app.font.render("Invaders", True, (255,255,255))
         self.title_rect = self.title.get_rect()
-        self.title_rect.center = (app.width // 2, app.height // 2 - 240)
+        self.title_rect.center = (app.width // 2, app.height // 2)
         self.subtitle = app.font.render("Presiona la barra espaciadora para iniciar el juego.", True, (255,255,255))
         self.subtitle_rect = self.subtitle.get_rect()
         self.subtitle_rect.center = (app.width // 2, app.height // 2 + 160)
