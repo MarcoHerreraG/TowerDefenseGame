@@ -8,7 +8,7 @@ class Basic_Turret(Turret):
         self.tamX = 30
         self.tamY = 30
         self.damage = 15
-        self.shootingSpeed = 500
+        self.shootingSpeed = 250
         self.range = 80
         self.gun = Bullet_Pool(10, posX, posY)
         self.last = pygame.time.get_ticks()
