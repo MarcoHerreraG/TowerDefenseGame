@@ -109,7 +109,7 @@ class UI:
                 if self.type1 == True:
                     cell.color = (135, 206, 235, 1)
                 elif self.type1 == False:
-                    cell.color = (255, 255, 255, 0)
+                    cell.color = (0, 0, 0, 0)
                 cell.draw(screen)
                 screen.blit(self.basic_price, self.basic_pos)
 
@@ -120,7 +120,7 @@ class UI:
                 if self.type2 == True:
                     cell.color = (135, 206, 235, 1)
                 elif self.type2 == False:
-                    cell.color = (255, 255, 255, 0)
+                    cell.color = (0, 0, 0, 0)
                 cell.draw(screen)
                 screen.blit(self.tank_price, self.tank_pos)
 
@@ -131,7 +131,7 @@ class UI:
                 if self.type3 == True:
                     cell.color = (135, 206, 235, 1)
                 elif self.type3 == False:
-                    cell.color = (255, 255, 255, 0)
+                    cell.color = (0, 0, 0, 0)
                 cell.draw(screen)
                 screen.blit(self.ranged_price, self.ranged_pos)
 
