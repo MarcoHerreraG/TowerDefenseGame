@@ -13,9 +13,9 @@ class Fast_Enemy(Enemy):
         self.damageToNexus = 1
         self.rect.x = x
         self.rect.y = y
-        self.speed = 2.0
-        self.targetX = 0
-        self.targetY = 0
+        self.speed = 0.9
+        self.tarx = 0
+        self.tary = 0
         self.active = False
         self.currentPos = pygame.Vector2(self.rect.x, self.rect.y)
         self.movement = False

@@ -14,9 +14,9 @@ class Tank_Enemy(Enemy):
         self.damageToNexus = 3
         self.rect.x = x
         self.rect.y = y
-        self.speed = 1
-        self.targetX = 0
-        self.targetY = 0
+        self.speed = 0.3
+        self.tarx = 0
+        self.tary = 0
         self.active = False
         self.currentPos = pygame.Vector2(self.rect.x, self.rect.y)
         self.loopCount = 0
