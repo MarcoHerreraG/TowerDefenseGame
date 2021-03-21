@@ -29,6 +29,7 @@ class PygameApp():
         if self.active_scene is not None: 
             self.active_scene.exit()
         self.active_scene = self.scenes[scene_name]
+        self.active_scene.__init__(self)
         self.active_scene.start()
 
     def load_assets(self): 

@@ -7,7 +7,7 @@ class Heavy_Turret(Turret):
     def __init__(self, posX, posY):
         self.tamX = 30
         self.tamY = 30
-        self.damage = 220
+        self.damage = 50
         self.shootingSpeed = 1000
         self.range = 80
         self.gun = Bullet_Pool(10, posX, posY)
