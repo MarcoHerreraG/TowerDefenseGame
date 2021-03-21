@@ -23,7 +23,7 @@ class Enemy_Pool():
         self.waveOver = False
 
     def start(self, Nexo):
-        self.fill_pool(Nexo)
+        self.fill_pool()
         self.Nexo = Nexo
 
     def update(self, coords):
@@ -32,9 +32,9 @@ class Enemy_Pool():
         if(self.pool[-1].active):
             print("spawn enem is over")
 
-    def fill_pool(self, Nexo):
+    def fill_pool(self):
         for a in range(self.size):
-            self.enemy = random.randint(0, 4)
+            self.enemy = random.randint(1, 3)
             if(self.enemy == 1):
                 self.pool.append(Basic_Enemy(self.app, self.originX, self.originY))
             elif(self.enemy == 2):
