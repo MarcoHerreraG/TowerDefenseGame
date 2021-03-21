@@ -7,6 +7,9 @@ class Bullet_Pool():
         for i in range(poolSize):
             self.pool.append(Bullet(originX, originY))
 
+    '''
+    funcion que llama a la funcion shootToTarget() de bullet si la bala no se a disparado
+    '''
     def shoot(self, targetPosX, targetPosY, targetTamX, targetTamY):
         for bullet in self.pool:
             if bullet.shot == False:

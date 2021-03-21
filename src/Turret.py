@@ -25,6 +25,9 @@ class Turret:
         if self.posX < 0:
             self.posX = 0
     
+    '''
+    funcion que llama a la funcion shoot() de gun y reduciendo la vida del objetivo segun la variable self.damage
+    '''
     def fire(self, target):
         targetPosX = target.currentPos.x
         targetPosY = target.currentPos.y
@@ -33,6 +36,9 @@ class Turret:
         self.gun.shoot(targetPosX, targetPosY, targetTamX, targetTamY)
         target.health -= self.damage
 
+    '''
+    funcion que llama a la funcion fire() cuando el objetivo esta en rango
+    '''
     def fireInRange(self, target):
         targetPosX = target.currentPos.x
         targetPosY = target.currentPos.y

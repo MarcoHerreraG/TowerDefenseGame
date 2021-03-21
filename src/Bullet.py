@@ -15,6 +15,9 @@ class Bullet():
         self.targetTamX = 0
         self.targetTamY = 0
 
+    '''
+    mueve la bala de su origen al objetivo indicado
+    '''
     def shootToTarget(self, targetPosX, targetPosY, targetTamX, targetTamY):
         self.targetPosX = targetPosX
         self.targetPosY = targetPosY

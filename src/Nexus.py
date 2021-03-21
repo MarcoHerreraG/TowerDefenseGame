@@ -11,5 +11,8 @@ class Nexus:
         pygame.draw.rect(screen, (255, 0, 0), (265, 404, 72, 18))
         pygame.draw.rect(screen, (255, 255, 0), (265, 404, self.health, 18))
     
+    '''
+    funcion que reduce la vida del nexo segun el daño especificado
+    '''
     def takedamage(self, damage):
         self.health = self.health - damage
