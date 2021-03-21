@@ -13,7 +13,7 @@ class Enemy_Pool():
         self.wave_increase = 3
         self.originX = deactiveX
         self.originY = deactiveY
-        self.spawnRate = 5000
+        self.spawnRate = 1500
         self.basic_anim = [pygame.image.load('Assets/Images/Basic/Front/Basic0.png'), pygame.image.load('Assets/Images/Basic/Front/Basic1.png'), pygame.image.load('Assets/Images/Basic/Front/Basic2.png'), 
         pygame.image.load('Assets/Images/Basic/Front/Basic3.png'), pygame.image.load('Assets/Images/Basic/Front/Basic4.png')]
 
