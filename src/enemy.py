@@ -23,16 +23,11 @@ class Enemy:
         self.nextY = 0
         self.i = 1
 
-<<<<<<< HEAD
-    def start(self, x, y, coords, grid, nexus):
-        self.setSpawn(x, y)
-=======
     '''***
         START DEL ENEMIGO, SETEA UN SPAWN AL ENEMIGO
     ***'''
     def start(self, x , y, coords, grid, nexus):
         self.setSpawn(x,y)
->>>>>>> sushirod
         self.coords = coords
         self.grid = grid
         self.nexus = nexus
@@ -50,14 +45,10 @@ class Enemy:
         if(self.active):
             self.moveToTarget(self.nextX, self.nextY, self.speed)
     
-<<<<<<< HEAD
-    def moveToTarget(self, targetX, targetY, speed):
-=======
         '''***
         LE DICE AL ENEMIGO A DONDE TIENE QUE IR (X,Y)
     ***'''
     def moveToTarget(self, targetX , targetY, speed):
->>>>>>> sushirod
         self.movement = True
         h = targetY - self.currentPos.y
         w = targetX - self.currentPos.x
