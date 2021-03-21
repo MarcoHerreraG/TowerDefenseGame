@@ -20,10 +20,13 @@ class UI:
         self.screen = app.screen
         self.money = app.font.render("Money: " + str(self.wallet), True, (255,255,255))
         self.money_rect = self.money.get_rect()
-        self.money_rect.center = (app.width//2, app.height//2)
+        self.money_rect.center = (40 + self.money_rect.width / 2, 40)
         self.counter = app.font.render("Tiempo hasta la siguiente oleada: ", True, (255,255,255))
         self.counter_rect = self.counter.get_rect()
-        self.counter_rect.center = (app.width//2, app.height - 400)
+        self.counter_rect.center = (app.width // 2, app.height // 2)
+        self.wave = app.font.render("Oleada actual: ", True, (255,255,255))
+        self.wave_rect = self.wave.get_rect()
+        self.wave_rect.center = (app.width - 40 - self.wave_rect.width / 2, 40)
         self.cooldown = 0
         self.restarted = False
 
@@ -75,12 +78,16 @@ class UI:
         self.mousePos = pygame.mouse.get_pos()
         self.getLeftClick()
         self.money = self.app.font.render("Money: " + str(self.wallet), True, (255,255,255))
+        self.wave = self.app.font.render("Oleada actual: " +  str(enem.currentRound), True, (255,255,255))
         self.now = pygame.time.get_ticks()
         if(enem.endRound == True):
             self.restarted = True
             self.cooldown -= (self.now - self.last)
             self.temp = (int)(self.cooldown/1000)*-1
-            self.temp2 = 10
+            if(enem.currentRound < 10):
+                self.temp2 = 10
+            else:
+                self.temp2 = 0
             print(self.temp)
             self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " +  str(self.temp2- self.temp), True, (255,255,255))
             self.last = pygame.time.get_ticks()
@@ -105,6 +112,7 @@ class UI:
                     cell.color = (255, 255, 255)
                 cell.draw(screen)
         self.screen.blit(self.money, self.money_rect)
+        self.screen.blit(self.wave, self.wave_rect)
         if(enem.endRound == True):
             self.screen.blit(self.counter, self.counter_rect)
 
