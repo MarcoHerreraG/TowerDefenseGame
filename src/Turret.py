@@ -12,6 +12,7 @@ class Turret:
         self.gun = Bullet_Pool(1, posX, posY)
         self.last = pygame.time.get_ticks()
         self.spawn(posX, posY)
+        self.image = pygame.image.load("Assets/Images/test")
 
     def spawn(self, posX, posY):
         self.posX = posX - (self.tamX/2)
@@ -51,7 +52,7 @@ class Turret:
     def draw(self, screen):
         self.gun.draw(screen)
         #pygame.draw.circle(screen, (255, 255, 255), (self.posX + self.tamX / 2, self.posY + self.tamY / 2), self.range)
-        pygame.draw.rect(screen, (255, 255, 255), (self.posX, self.posY, self.tamX, self.tamY))
+        screen.blit(self.image, self.posX, self.posY)
 
     def update(self):
         self.gun.update()
