@@ -35,6 +35,7 @@ class Fast_Enemy(Enemy):
         self.grid = grid
         self.coordstomove()
         self.Nexo = Nexo
+        self.health = 150
 
     def draw(self):
         if(self.active):

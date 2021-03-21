@@ -73,7 +73,6 @@ class UI:
         self.mousePos = pygame.mouse.get_pos()
         self.getLeftClick()
         self.title = self.app.font.render("Money: " + str(self.wallet), True, (255,255,255))
-        print("si entra al if")
         self.now = pygame.time.get_ticks()
         self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " + str(self.cooldown - (self.now - self.last)), True, (255,255,255))
         self.last = pygame.time.get_ticks()
