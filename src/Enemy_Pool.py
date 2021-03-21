@@ -29,10 +29,11 @@ class Enemy_Pool():
     def update(self, coords):
         self.spawn_enem(coords)
         self.endRound = True
-        for a in self.pool:
-            if a.active == True:
-                self.endRound = False
-        self.check_round()
+        if(self.i == len(self.pool)):
+            for a in self.pool:
+                if a.active == True:
+                    self.endRound = False
+            self.check_round()
 
     def fill_pool(self):
         for a in range(self.size):
