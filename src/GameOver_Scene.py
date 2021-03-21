@@ -7,13 +7,13 @@ class GameOver_Scene(Scene):
         self.screen = app.screen
         self.title = app.font.render("Invaders", True, (255,255,255))
         self.title_rect = self.title.get_rect()
-        self.title_rect.center = (app.width//2, app.height//2)
+        self.title_rect.center = (app.width // 2, app.height // 2)
         self.subtitle = app.font.render("Presiona Enter para iniciar", True, (255,255,255))
         self.subtitle_rect = self.subtitle.get_rect()
-        self.subtitle_rect.center = (app.width//2, app.height//2 + 200)
+        self.subtitle_rect.center = (app.width // 2, app.height // 2 + 200)
         self.subtitle2 = app.font.render("Presiona I para ver las instrucciones de la habilidad", True, (255,255,255))
         self.subtitle2_rect = self.subtitle.get_rect()
-        self.subtitle2_rect.center = (app.width//2-175, app.height//2 + 120)
+        self.subtitle2_rect.center = (app.width // 2 - 175, app.height // 2 + 120)
         super().__init__('IntroScene')
 
     def start(self):

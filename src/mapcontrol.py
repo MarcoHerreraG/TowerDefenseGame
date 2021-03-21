@@ -16,7 +16,7 @@ class MapControl:
 
     def start(self, leveltodraw):
         self.imagetodraw = leveltodraw
-        self.maptext = open(self.maptext,"r")
+        self.maptext = open(self.maptext, "r")
         self.image = pygame.image.load(self.imagetodraw)
         self.rect = self.image.get_rect()
 
@@ -25,7 +25,7 @@ class MapControl:
         for cell in self.grid.grid:
             for id in self.coords:
                 if cell.id[0] == id[0] and cell.id[1] == id[1]:
-                    '''pygame.draw.rect(self.screen, (255,0,0), (cell.posX+5, cell.posY+5, 50, 50))'''
+                    '''pygame.draw.rect(self.screen, (255, 0, 0), (cell.posX + 5, cell.posY + 5, 50, 50))'''
     
     def update(self):
         pass
