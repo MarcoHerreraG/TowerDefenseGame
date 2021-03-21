@@ -3,11 +3,10 @@ from enemy import Enemy
 import math
 
 class Fast_Enemy(Enemy):
-    def __init__(self, app, x , y):
+    def __init__(self, app, x , y, anim):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()
-        self.animation = [pygame.image.load('Assets/Images/Fast/Front/Fast0.png'), pygame.image.load('Assets/Images/Fast/Front/Fast1.png'), pygame.image.load('Assets/Images/Fast/Front/Fast2.png'), 
-        pygame.image.load('Assets/Images/Fast/Front/Fast3.png'), pygame.image.load('Assets/Images/Fast/Front/Fast4.png'), pygame.image.load('Assets/Images/Fast/Front/Fast5.png')]
+        self.animation = anim
         self.rect = self.animation[0].get_rect()
         self.health = 150
         self.damageToNexus = 1
