@@ -8,62 +8,62 @@ class Enemy:
         self.image = pygame.image.load("assets/images/test.png")
         self.rect = self.image.get_rect()
         self.health = 100
-        self.damagetonexus = 0
+        self.damageToNexus = 0
         self.active = False
         self.rect.x = x
         self.rect.y = y
         self.speed = None
-        self.Nexo = None
-        self.tarx = 0
-        self.tary = 0
-        self.currentpos = pygame.Vector2(self.rect.x, self.rect.y)
+        self.nexus = None
+        self.targetX = 0
+        self.targetY = 0
+        self.currentPos = pygame.Vector2(self.rect.x, self.rect.y)
         self.coords = None
         self.grid = None
-        self.nextx = 0
-        self.nexty = 0
+        self.nextX = 0
+        self.nextY = 0
         self.i = 1
 
-    def start(self, x , y, coords, grid, Nexo):
-        self.setspawn(x,y)
+    def start(self, x , y, coords, grid, nexus):
+        self.setSpawn(x,y)
         self.coords = coords
         self.grid = grid
-        self.Nexo = Nexo
+        self.nexus = nexus
 
     def draw(self):
-        self.screen.blit(self.image, self.currentpos)
+        self.screen.blit(self.image, self.currentPos)
     
     def update(self):
         if(self.active):
-            self.movetotarget(self.nextx, self.nexty, self.speed)
+            self.moveToTarget(self.nextX, self.nextY, self.speed)
     
-    def movetotarget(self, tarx , tary, speed):
+    def moveToTarget(self, targetX , targetY, speed):
         self.movement = True
-        h = tary-self.currentpos.y
-        w = tarx-self.currentpos.x
-        d = math.sqrt(h*h + w*w)
-        if(d>1):
-            self.currentpos.y = self.currentpos.y + speed / d*h
-            self.currentpos.x = self.currentpos.x + speed / d*w
+        h = targetY - self.currentPos.y
+        w = targetX - self.currentPos.x
+        d = math.sqrt(h * h + w * w)
+        if(d > 1):
+            self.currentPos.y = self.currentPos.y + speed / d * h
+            self.currentPos.x = self.currentPos.x + speed / d * w
         else:
-            self.coordstomove()
+            self.coordsToMove()
 
-    def setspawn(self, x1, y1):
-        self.currentpos.x= x1
-        self.currentpos.y = y1
+    def setSpawn(self, x1, y1):
+        self.currentPos.x = x1
+        self.currentPos.y = y1
     
-    def coordstomove(self):
-        if(self.i > len(self.coords)-1):
-            self.damageNexus(self.Nexo, self.damagetonexus)
+    def coordsToMove(self):
+        if(self.i > len(self.coords) - 1):
+            self.damageNexus(self.nexus, self.damageToNexus)
             self.active = False
             return
         for cell in self.grid.grid:
             if cell.id[0] == self.coords[self.i][0] and cell.id[1] == self.coords[self.i][1]:
-                self.nextx = cell.posX
-                self.nexty = cell.posY
+                self.nextX = cell.posX
+                self.nextY = cell.posY
         self.i = self.i + 1
         return 
     
-    def damageNexus(self, Nexo, ataque):
-        ataque = self.damagetonexus
-        #self.Nexo.health = self.Nexo.health - ataque
-        self.Nexo.takedamage(ataque)
+    def damageNexus(self, nexus, attack):
+        attack = self.damageToNexus
+        #self.nexus.health = self.nexus.health - attack
+        self.nexus.takedamage(attack)

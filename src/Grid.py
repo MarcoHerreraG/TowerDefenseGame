@@ -7,14 +7,14 @@ class Grid:
         posX = 0
         posY = 0
         color = (255, 0, 0)
-        for y in range (11):#11
+        for y in range (11): #11
             if color == (255, 0, 0):
                 color = (0, 255, 0)
             elif color == (0, 255, 0):
                 color = (0, 0, 255)
             elif color == (0, 0, 255):
                 color = (255, 0, 0)
-            for x in range(18):#18
+            for x in range(18): #18
                 id = (x, y)
                 posX = x * tam
                 posY = y * tam
