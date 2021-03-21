@@ -44,13 +44,14 @@ class Enemy_Pool():
 
     def fill_pool(self):
         for a in range(self.size):
-            self.enemy = random.randint(1, 3)
+            self.pool.append(Basic_Enemy(self.app, self.originX, self.originY, self.basic_anim))
+            '''self.enemy = random.randint(1, 3)
             if(self.enemy == 1):
                 self.pool.append(Basic_Enemy(self.app, self.originX, self.originY, self.basic_anim))
             elif(self.enemy == 2):
                 self.pool.append(Fast_Enemy(self.app, self.originX, self.originY, self.fast_anim))
             elif(self.enemy == 3):
-                self.pool.append(Tank_Enemy(self.app, self.originX, self.originY, self.tank_anim))
+                self.pool.append(Tank_Enemy(self.app, self.originX, self.originY, self.tank_anim))'''
 
     def spawn_enem(self, coords):
         now = pygame.time.get_ticks()
@@ -70,13 +71,18 @@ class Enemy_Pool():
 
     def add_enemies(self):
         for a in range(self.wave_increase):
-            self.enemy = random.randint(1, 3)
-            if(self.enemy == 1):
-                self.pool.append(Basic_Enemy(self.app, self.originX, self.originY, self.basic_anim))
-            elif(self.enemy == 2):
-                self.pool.append(Fast_Enemy(self.app, self.originX, self.originY, self.fast_anim))
-            elif(self.enemy == 3):
+            if self.currentRound == 2:
                 self.pool.append(Tank_Enemy(self.app, self.originX, self.originY, self.tank_anim))
+            elif self.currentRound == 3:
+                self.pool.append(Fast_Enemy(self.app, self.originX, self.originY, self.fast_anim))
+            else:
+                self.enemy = random.randint(1, 3)
+                if(self.enemy == 1):
+                    self.pool.append(Basic_Enemy(self.app, self.originX, self.originY, self.basic_anim))
+                elif(self.enemy == 2):
+                    self.pool.append(Fast_Enemy(self.app, self.originX, self.originY, self.fast_anim))
+                elif(self.enemy == 3):
+                    self.pool.append(Tank_Enemy(self.app, self.originX, self.originY, self.tank_anim))
         self.i = 0
         self.endRound = False
     
