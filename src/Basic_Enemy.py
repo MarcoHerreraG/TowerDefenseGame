@@ -35,6 +35,7 @@ class Basic_Enemy(Enemy):
         self.grid = grid
         self.coordstomove()
         self.Nexo = Nexo
+        self.health = 200
 
     def draw(self):
         if(self.active):
