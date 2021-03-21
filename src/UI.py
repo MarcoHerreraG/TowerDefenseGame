@@ -89,7 +89,7 @@ class UI:
         if(enem.endRound == True):
             self.restarted = True
             self.cooldown -= (self.now - self.last)
-            self.temp = (int)(self.cooldown/1000)*-1
+            self.temp = (int)(self.cooldown/1000) *- 1
             if(enem.currentRound < 10):
                 self.temp2 = 10
             else:
@@ -106,18 +106,33 @@ class UI:
                 self.basic_rect.x = cell.posX
                 self.basic_rect.y = cell.posY
                 self.basic_pos = pygame.Vector2(self.basic_rect.x, self.basic_rect.y)
+                if self.type1 == True:
+                    cell.color = (135, 206, 235, 1)
+                elif self.type1 == False:
+                    cell.color = (255, 255, 255, 0)
+                cell.draw(screen)
                 screen.blit(self.basic_price, self.basic_pos)
 
             if cell.id == (0, 3):
                 self.tank_rect.x = cell.posX
                 self.tank_rect.y = cell.posY
                 self.tank_pos = pygame.Vector2(self.tank_rect.x, self.tank_rect.y)
+                if self.type2 == True:
+                    cell.color = (135, 206, 235, 1)
+                elif self.type2 == False:
+                    cell.color = (255, 255, 255, 0)
+                cell.draw(screen)
                 screen.blit(self.tank_price, self.tank_pos)
 
             if cell.id == (0, 4):
                 self.ranged_rect.x = cell.posX
                 self.ranged_rect.y = cell.posY
                 self.ranged_pos = pygame.Vector2(self.ranged_rect.x, self.ranged_rect.y)
+                if self.type3 == True:
+                    cell.color = (135, 206, 235, 1)
+                elif self.type3 == False:
+                    cell.color = (255, 255, 255, 0)
+                cell.draw(screen)
                 screen.blit(self.ranged_price, self.ranged_pos)
 
         self.screen.blit(self.money, self.money_rect)
