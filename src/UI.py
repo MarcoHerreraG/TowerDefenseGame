@@ -18,13 +18,13 @@ class UI:
         self.health = nexus.health
         self.app = app
         self.screen = app.screen
-        self.money = app.font.render("Money: " + str(self.wallet), True, (255,255,255))
+        self.money = app.font.render("Money: " + str(self.wallet), True, (255, 255, 255))
         self.money_rect = self.money.get_rect()
         self.money_rect.center = (40 + self.money_rect.width / 2, 40)
-        self.counter = app.font.render("Tiempo hasta la siguiente oleada: ", True, (255,255,255))
+        self.counter = app.font.render("Tiempo hasta la siguiente oleada: ", True, (255, 255, 255))
         self.counter_rect = self.counter.get_rect()
         self.counter_rect.center = (app.width // 2, app.height // 2)
-        self.wave = app.font.render("Oleada actual: ", True, (255,255,255))
+        self.wave = app.font.render("Oleada actual: ", True, (255, 255, 255))
         self.wave_rect = self.wave.get_rect()
         self.wave_rect.center = (app.width - 40 - self.wave_rect.width / 2, 40)
         self.cooldown = 0
@@ -83,8 +83,8 @@ class UI:
         self.restarted = False
         self.mousePos = pygame.mouse.get_pos()
         self.getLeftClick()
-        self.money = self.app.font.render("Money: " + str(self.wallet), True, (255,255,255))
-        self.wave = self.app.font.render("Oleada actual: " +  str(enem.currentRound), True, (255,255,255))
+        self.money = self.app.font.render("Money: " + str(self.wallet), True, (255, 255, 255))
+        self.wave = self.app.font.render("Oleada actual: " + str(enem.currentRound), True, (255, 255, 255))
         self.now = pygame.time.get_ticks()
         if(enem.endRound == True):
             self.restarted = True
@@ -95,7 +95,7 @@ class UI:
             else:
                 self.temp2 = 0
             print(self.temp)
-            self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " +  str(self.temp2- self.temp), True, (255,255,255))
+            self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " +  str(self.temp2 - self.temp), True, (255, 255, 255))
             self.last = pygame.time.get_ticks()
             if(self.temp2 - self.temp <= 0):
                 enem.check_round()

@@ -3,7 +3,7 @@ from enemy import Enemy
 import math
 
 class Tank_Enemy(Enemy):
-    def __init__(self, app, x , y, anim):
+    def __init__(self, app, x, y, anim):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()
         self.animation = anim
@@ -26,8 +26,8 @@ class Tank_Enemy(Enemy):
         self.i = 1
         self.moneyDrop = 30 
 
-    def start(self, x , y, coords, grid, nexus):
-        self.setSpawn(x,y)
+    def start(self, x, y, coords, grid, nexus):
+        self.setSpawn(x, y)
         self.active = True
         self.coords = coords
         self.grid = grid

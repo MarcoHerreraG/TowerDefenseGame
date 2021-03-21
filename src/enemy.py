@@ -2,7 +2,7 @@ import pygame
 import math
  
 class Enemy:
-    def __init__(self, app, x , y):
+    def __init__(self, app, x, y):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()
         self.image = pygame.image.load("assets/images/test.png")
@@ -23,8 +23,8 @@ class Enemy:
         self.nextY = 0
         self.i = 1
 
-    def start(self, x , y, coords, grid, nexus):
-        self.setSpawn(x,y)
+    def start(self, x, y, coords, grid, nexus):
+        self.setSpawn(x, y)
         self.coords = coords
         self.grid = grid
         self.nexus = nexus
@@ -36,7 +36,7 @@ class Enemy:
         if(self.active):
             self.moveToTarget(self.nextX, self.nextY, self.speed)
     
-    def moveToTarget(self, targetX , targetY, speed):
+    def moveToTarget(self, targetX, targetY, speed):
         self.movement = True
         h = targetY - self.currentPos.y
         w = targetX - self.currentPos.x

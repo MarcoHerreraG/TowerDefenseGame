@@ -33,7 +33,7 @@ class Play_Scene(Scene):
         print('Se inicia:', self.name)
         self.enemy.start(self.nexus)
         if(self.level == 1):
-            self.gameMap.mapText="level1.txt"
+            self.gameMap.mapText = "level1.txt"
             self.gameMap.start("assets/images/lvl1.png")
             self.gameMap.loadmap("level1.txt")
             
@@ -61,7 +61,7 @@ class Play_Scene(Scene):
             self.app.change_scene('victory')
 
     def draw(self):
-        self.screen.fill((255,0,0))
+        self.screen.fill((255, 0, 0))
         self.gameMap.draw(self.gameMap.rect)
         self.nexus.draw(self.screen)
         for turret in self.turrets:

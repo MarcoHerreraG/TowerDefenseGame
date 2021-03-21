@@ -19,10 +19,10 @@ class PygameApp():
 
     def init_pygame(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((self.width,self.height))
+        self.screen = pygame.display.set_mode((self.width, self.height))
         self.clock = pygame.time.Clock() 
         self.load_assets()
-        self.scenes = {'intro': Intro_Scene(self), 'play': Play_Scene(self), 'instructions' : Instruction_Scene(self) ,'over' : GameOver_Scene(self), 'victory' : Victory_Scene(self)}
+        self.scenes = {'intro': Intro_Scene(self), 'play': Play_Scene(self), 'instructions' : Instruction_Scene(self), 'over' : GameOver_Scene(self), 'victory' : Victory_Scene(self)}
         self.change_scene('intro')
 
     def change_scene(self, scene_name):
