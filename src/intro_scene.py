@@ -7,7 +7,7 @@ class Intro_Scene(Scene):
         self.screen = app.screen
         self.title = app.font.render("Invaders", True, (255,255,255))
         self.title_rect = self.title.get_rect()
-        self.title_rect.center = (app.width // 2, app.height // 2)
+        self.title_rect.center = (app.width // 2, app.height // 2 - 240)
         self.subtitle = app.font.render("Presiona Enter para iniciar", True, (255,255,255))
         self.subtitle_rect = self.subtitle.get_rect()
         self.subtitle_rect.center = (app.width // 2, app.height // 2 + 200)
@@ -25,6 +25,8 @@ class Intro_Scene(Scene):
                 self.app.change_scene('play')
             elif event.key == pygame.K_i:
                 self.app.change_scene('instructions')
+            elif event.key == pygame.K_q:
+                self.app.exit()
 
     def update(self):
         pass

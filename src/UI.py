@@ -26,6 +26,7 @@ class UI:
         self.counter_rect.center = (app.width//2, app.height - 400)
         self.cooldown = 0
         self.restarted = False
+
     def spawnTurret(self, cell):
         for spawn in self.turretsSpawn:
             if cell.id == spawn:
