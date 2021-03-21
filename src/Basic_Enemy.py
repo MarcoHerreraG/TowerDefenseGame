@@ -29,7 +29,7 @@ class Basic_Enemy(Enemy):
         self.moneyDrop = 20 
 
     def start(self, x , y, coords, grid, nexus):
-        self.setspawn(x,y)
+        self.setSpawn(x,y)
         self.active = True
         self.coords = coords
         self.grid = grid

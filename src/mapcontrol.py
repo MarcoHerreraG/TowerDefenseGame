@@ -6,18 +6,18 @@ class MapControl:
     def __init__(self, app, grid):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()
-        self.imagetodraw = None
-        self.texttoread = None
+        self.imageToDraw = None
+        self.textToRead = None
         self.image = None
         self.grid = grid
         self.rect = None
-        self.maptext = None
+        self.mapText = None
         self.coords = []
 
     def start(self, leveltodraw):
-        self.imagetodraw = leveltodraw
-        self.maptext = open(self.maptext, "r")
-        self.image = pygame.image.load(self.imagetodraw)
+        self.imageToDraw = leveltodraw
+        self.mapText = open(self.mapText, "r")
+        self.image = pygame.image.load(self.imageToDraw)
         self.rect = self.image.get_rect()
 
     def draw(self, rect):
