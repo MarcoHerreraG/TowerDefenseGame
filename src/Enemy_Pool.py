@@ -20,7 +20,7 @@ class Enemy_Pool():
         self.nextX = 1
         self.nextY = 1
         self.nexus = None
-        self.waveOver = False
+        self.endRound = False
 
     def start(self, nexus):
         self.fill_pool()
@@ -28,12 +28,11 @@ class Enemy_Pool():
 
     def update(self, coords):
         self.spawn_enem(coords)
-        self.endRound = True
         if(self.i == len(self.pool)):
+            self.endRound = True
             for a in self.pool:
                 if a.active == True:
                     self.endRound = False
-            self.check_round()
 
     def fill_pool(self):
         for a in range(self.size):
@@ -50,16 +49,14 @@ class Enemy_Pool():
         if(now - self.last >= self.spawnRate and self.i < len(self.pool) and self.pool[self.i].active == False):
             for cell in self.grid.grid:
                 if cell.id[0] == coords[0][0] and cell.id[1] == coords[0][1]:
-                    self.pool[self.i].start(cell.posX + 5, cell.posY + 5, coords, self.grid, self.nexus)
+                    self.pool[self.i].start(cell.posX, cell.posY, coords, self.grid, self.nexus)
                     self.i = self.i + 1
                     self.last = pygame.time.get_ticks()
 
     def check_round(self):
         if self.endRound == True:
-            self.waveOver = True
             self.add_enemies()
             print("entra aqui")
-            #self.i = 0
 
     def add_enemies(self):
         for a in range(self.wave_increase):
@@ -71,3 +68,4 @@ class Enemy_Pool():
             elif(self.enemy == 3):
                 self.pool.append(Tank_Enemy(self.app, self.originX, self.originY))
         self.i = 0
+        self.endRound = False
