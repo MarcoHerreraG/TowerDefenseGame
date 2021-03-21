@@ -16,14 +16,11 @@ class Enemy_Pool():
         self.spawnRate = 5000
         self.basic_anim = [pygame.image.load('Assets/Images/Basic/Front/Basic0.png'), pygame.image.load('Assets/Images/Basic/Front/Basic1.png'), pygame.image.load('Assets/Images/Basic/Front/Basic2.png'), 
         pygame.image.load('Assets/Images/Basic/Front/Basic3.png'), pygame.image.load('Assets/Images/Basic/Front/Basic4.png')]
-
         self.tank_anim = [pygame.image.load('Assets/Images/Tank/Front/Tank0.png'), pygame.image.load('Assets/Images/Tank/Front/Tank1.png'), pygame.image.load('Assets/Images/Tank/Front/Tank2.png'), 
         pygame.image.load('Assets/Images/Tank/Front/Tank3.png'), pygame.image.load('Assets/Images/Tank/Front/Tank4.png'), pygame.image.load('Assets/Images/Tank/Front/Tank5.png')
         , pygame.image.load('Assets/Images/Tank/Front/Tank6.png')]
-
         self.fast_anim = [pygame.image.load('Assets/Images/Fast/Front/Fast0.png'), pygame.image.load('Assets/Images/Fast/Front/Fast1.png'), pygame.image.load('Assets/Images/Fast/Front/Fast2.png'), 
         pygame.image.load('Assets/Images/Fast/Front/Fast3.png'), pygame.image.load('Assets/Images/Fast/Front/Fast4.png'), pygame.image.load('Assets/Images/Fast/Front/Fast5.png')]
-
         self.last = pygame.time.get_ticks()
         self.i = 0
         self.grid = grid
@@ -31,6 +28,7 @@ class Enemy_Pool():
         self.nextY = 1
         self.nexus = None
         self.endRound = False
+        self.currentRound = 1
 
     def start(self, nexus):
         self.fill_pool()
@@ -40,6 +38,7 @@ class Enemy_Pool():
         self.spawn_enem(coords)
         if(self.i == len(self.pool)):
             self.endRound = True
+            self.currentRound += 1
             for a in self.pool:
                 if a.active == True:
                     self.endRound = False
@@ -64,7 +63,7 @@ class Enemy_Pool():
                     self.last = pygame.time.get_ticks()
 
     def check_round(self):
-        if self.endRound == True:
+        if self.endRound == True and self.currentRound < 11:
             self.add_enemies()
             print("entra aqui")
 

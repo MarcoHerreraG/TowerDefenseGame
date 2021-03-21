@@ -57,7 +57,8 @@ class Play_Scene(Scene):
         self.nexus.update()
         if self.nexus.health <= 0:
             self.app.change_scene('over')
-        
+        if self.enemy.currentRound >= 11:
+            self.app.change_scene('victory')
 
     def draw(self):
         self.screen.fill((255,0,0))
