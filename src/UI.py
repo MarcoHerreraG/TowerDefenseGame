@@ -19,12 +19,12 @@ class UI:
         self.app = app
         self.screen = app.screen
         self.last = pygame.time.get_ticks()
-        self.title = app.font.render("Money: " + str(self.wallet), True, (255,255,255))
-        self.title_rect = self.title.get_rect()
-        self.title_rect.center = (app.width//2, app.height//2)
+        self.money = app.font.render("Money: " + str(self.wallet), True, (255,255,255))
+        self.money_rect = self.money.get_rect()
+        self.money_rect.center = (app.width//2, app.height//2)
         self.counter = app.font.render("Tiempo hasta la siguiente oleada: ", True, (255,255,255))
         self.counter_rect = self.counter.get_rect()
-        self.counter_rect.center = (app.width//2, app.height+400)
+        self.counter_rect.center = (app.width//2, app.height - 400)
         self.cooldown = 1000
 
     def spawnTurret(self, cell):
@@ -72,7 +72,7 @@ class UI:
     def update(self, enem):
         self.mousePos = pygame.mouse.get_pos()
         self.getLeftClick()
-        self.title = self.app.font.render("Money: " + str(self.wallet), True, (255,255,255))
+        self.money = self.app.font.render("Money: " + str(self.wallet), True, (255,255,255))
         self.now = pygame.time.get_ticks()
         self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " + str(self.cooldown - (self.now - self.last)), True, (255,255,255))
         self.last = pygame.time.get_ticks()
@@ -96,5 +96,5 @@ class UI:
                 if self.type3 == True:
                     cell.color = (255, 255, 255)
                 cell.draw(screen)
-        self.screen.blit(self.title, self.title_rect)
+        self.screen.blit(self.money, self.money_rect)
         self.screen.blit(self.counter, self.counter_rect)
