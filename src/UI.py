@@ -78,10 +78,13 @@ class UI:
         if(enem.waveOver == True):
             self.restarted = True
             self.cooldown -= (self.now - self.last)
-            self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " + str((int)(self.cooldown/1000)*-1), True, (255,255,255))
+            self.temp = (int)(self.cooldown/1000)*-1
+            self.temp2 = 10
+            print(self.temp)
+            self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " +  str(self.temp2- self.temp), True, (255,255,255))
             self.last = pygame.time.get_ticks()
     
-    def draw(self, screen):
+    def draw(self, screen, enem):
         for cell in self.grid.grid:
             if cell.id == (0, 2):
                 cell.color = (255, 0, 255)
@@ -99,7 +102,8 @@ class UI:
                     cell.color = (255, 255, 255)
                 cell.draw(screen)
         self.screen.blit(self.money, self.money_rect)
-        self.screen.blit(self.counter, self.counter_rect)
+        if(enem.waveOver == True):
+            self.screen.blit(self.counter, self.counter_rect)
 
     def restart(self):
         if(self.restarted == False):
