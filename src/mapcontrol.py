@@ -14,12 +14,18 @@ class MapControl:
         self.mapText = None
         self.coords = []
 
+    '''***
+        CARGA EL NIVEL Y LA IMAGEN SEGUN EL NIVEL RECIBIDO
+    ***'''
     def start(self, leveltodraw):
         self.imageToDraw = leveltodraw
         self.mapText = open(self.mapText, "r")
         self.image = pygame.image.load(self.imageToDraw)
         self.rect = self.image.get_rect()
 
+    '''***
+        ACTIVA Y HACE VISIBLE EL NIVEL
+    ***'''
     def draw(self, rect):
         self.screen.blit(self.image, rect)
         for cell in self.grid.grid:
@@ -30,7 +36,10 @@ class MapControl:
     def update(self):
         pass
     
-
+    
+    '''***
+        PASA EL NIVEL Y LEE LAS COORDS PARA PASARLAS AL ENEMY
+    ***'''
     def loadmap(self, level):
         with open(level) as f:
             for line in f:
