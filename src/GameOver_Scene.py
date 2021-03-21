@@ -5,7 +5,7 @@ class GameOver_Scene(Scene):
     def __init__(self, app):
         self.app = app
         self.screen = app.screen
-        self.title = app.font.render("Invaders", True, (255,255,255))
+        self.title = app.font.render("Game over", True, (255,0,0))
         self.title_rect = self.title.get_rect()
         self.title_rect.center = (app.width // 2, app.height // 2)
         self.subtitle = app.font.render("Presiona Enter para iniciar", True, (255,255,255))
