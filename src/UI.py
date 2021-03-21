@@ -74,10 +74,9 @@ class UI:
         self.getLeftClick()
         self.money = self.app.font.render("Money: " + str(self.wallet), True, (255,255,255))
         self.now = pygame.time.get_ticks()
-        self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " + str(self.cooldown - (self.now - self.last)), True, (255,255,255))
+        self.cooldown -= (self.now - self.last)
+        self.counter = self.app.font.render("Tiempo hasta la siguiente oleada: " + str(self.cooldown/1000), True, (255,255,255))
         self.last = pygame.time.get_ticks()
-
-
     
     def draw(self, screen):
         for cell in self.grid.grid:
