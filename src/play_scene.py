@@ -6,7 +6,7 @@ from Turret import Turret
 from Basic_Turret import Basic_Turret
 from Heavy_Turret import Heavy_Turret
 from LongRange_Turret import LongRange_Turret
-from mapcontrol import Map
+from mapcontrol import MapControl
 from Grid import Grid
 from UI import UI
 import pygame
@@ -14,20 +14,19 @@ import asyncio
 import time
 import random
 
-class PlayScene(Scene):
+class Play_Scene(Scene):
     def __init__(self, app):
         self.app = app
         self.grid = Grid()
         self.screen = app.screen
-        self.enemy = Enemy_Pool(app, 20, 900, 900, self.grid)
+        self.enemy = Enemy_Pool(app, 9, 900, 900, self.grid)
         self.turrets = []
-        self.gamemap = Map(app, self.grid)
+        self.gamemap = MapControl(app, self.grid)
         self.leveltodraw = None
         self.level = 1
         self.testing = False
-        self.wallet = 300
         self.nexus = Nexus()
-        self.ui = UI(self.grid, self.turrets, self.wallet, self.nexus)
+        self.ui = UI(self.grid, self.turrets, self.nexus, self.app)
         super().__init__('PlayScene')
 
     def start(self):
@@ -39,8 +38,6 @@ class PlayScene(Scene):
             self.gamemap.loadmap("level1.txt")
             
     def process_events(self, event):
-        if self.nexus.health <= 0:
-            self.app.change_scene('over')
         if event.type == pygame.KEYDOWN:
             '''self.turret.fire(self.test.currentpos.x, self.test.currentpos.y, 15, 15)'''
 
@@ -52,10 +49,16 @@ class PlayScene(Scene):
             e.update()
         for turret in self.turrets:
             for en in self.enemy.pool:
-                turret.fireInRange(en)
+                if en.active == True:
+                    turret.fireInRange(en)
+                    if en.health <= 0:
+                        self.ui.wallet += en.moneyDrop
             turret.update()
-        self.ui.update()
+        self.ui.update(self.enemy)
         self.nexus.update()
+        if self.nexus.health <= 0:
+            self.app.change_scene('over')
+        
 
     def draw(self):
         self.gamemap.draw(self.gamemap.rect)

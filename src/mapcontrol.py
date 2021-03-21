@@ -1,8 +1,8 @@
 import pygame
 import math
-from BasicEnemy import BasicEnemy
+from Basic_Enemy import Basic_Enemy
 
-class Map:
+class MapControl:
     def __init__(self, app, grid):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()
@@ -39,4 +39,3 @@ class Map:
                     line = [int(i) for i in line]
                     self.coords.append((line))
         print("Termine de leer el mapa, cargando mapa")
-    

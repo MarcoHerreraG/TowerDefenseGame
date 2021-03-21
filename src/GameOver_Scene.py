@@ -1,7 +1,7 @@
 from Scene import Scene
 import pygame
 
-class Intro_Scene(Scene):
+class GameOver_Scene(Scene):
     def __init__(self, app):
         self.app = app
         self.screen = app.screen
@@ -21,10 +21,7 @@ class Intro_Scene(Scene):
 
     def process_events(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN:
-                self.app.change_scene('play')
-            elif event.key == pygame.K_i:
-                self.app.change_scene('instructions')
+            self.app.change_scene('play')
 
     def update(self):
         pass

@@ -4,7 +4,6 @@ from Bullet_Pool import Bullet_Pool
 from Turret import Turret
 
 class Basic_Turret(Turret):
-
     def __init__(self, posX, posY):
         self.tamX = 30
         self.tamY = 30
@@ -23,3 +22,4 @@ class Basic_Turret(Turret):
     def update(self):
         self.gun.update()
         self.boundaries()
+

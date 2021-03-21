@@ -53,7 +53,7 @@ class Enemy:
     
     def coordstomove(self):
         if(self.i > len(self.coords)-1):
-            self.takedamage(self.Nexo, self.damagetonexus)
+            self.damageNexus(self.Nexo, self.damagetonexus)
             self.active = False
             return
         for cell in self.grid.grid:
@@ -63,11 +63,7 @@ class Enemy:
         self.i = self.i + 1
         return 
     
-    def takedamage(self, Nexo, ataque):
+    def damageNexus(self, Nexo, ataque):
         ataque = self.damagetonexus
-        self.Nexo.health = self.Nexo.health - ataque
-    
-
-
-
-
+        #self.Nexo.health = self.Nexo.health - ataque
+        self.Nexo.takedamage(ataque)

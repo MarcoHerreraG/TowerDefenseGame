@@ -3,7 +3,6 @@ import math
 from Bullet_Pool import Bullet_Pool
 
 class Turret:
-
     def __init__(self, posX, posY):
         self.tamX = 30
         self.tamY = 30

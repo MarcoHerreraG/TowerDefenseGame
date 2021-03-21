@@ -1,11 +1,11 @@
 import pygame
 import asyncio
-from intro_scene import  IntroScene
-from play_scene import PlayScene
-from over_scene import GameOverScene
+from intro_scene import  Intro_Scene
+from Play_scene import Play_Scene
+from GameOver_Scene import GameOver_Scene
+from Instruction_scene import Instruction_Scene
 
-
-class PyagemApp():
+class PygameApp():
     def __init__(self):
         self.running = True
         self.fps = 60
@@ -20,7 +20,7 @@ class PyagemApp():
         self.screen = pygame.display.set_mode((self.width,self.height))
         self.clock = pygame.time.Clock() 
         self.load_assets()
-        self.scenes = {'intro': IntroScene(self), 'play': PlayScene(self), 'over': GameOverScene(self)}
+        self.scenes = {'intro': Intro_Scene(self), 'play': Play_Scene(self), 'instructions' : Instruction_Scene(self) ,'over': GameOver_Scene(self)}
         self.change_scene('intro')
 
     def change_scene(self, scene_name):
@@ -51,8 +51,8 @@ class PyagemApp():
             self.update()
             self.draw()
 
-app = PyagemApp()
+app = PygameApp()
 
 app.run()
 
-pygame.quit() 
+pygame.quit()

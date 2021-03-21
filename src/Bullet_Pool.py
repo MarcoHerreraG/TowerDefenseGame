@@ -2,7 +2,6 @@ import pygame
 from Bullet import Bullet
 
 class Bullet_Pool():
-
     def __init__(self, poolSize, originX, originY):
         self.pool = []
         for i in range(poolSize):
